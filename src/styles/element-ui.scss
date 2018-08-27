@@ -1,0 +1,78 @@
+// override ui styles
+// button
+.el-button {
+  position: relative;
+  border-radius: 0;
+}
+
+// input
+.el-input__inner {
+  border-radius: 0;
+}
+
+.search-with-btn {
+  width: 290px;
+  .el-input__inner {
+    height: 38px;
+  }
+
+  .el-input-group__append {
+    padding: 0 20px;
+    line-height: 30px;
+    border-radius: 0;
+
+    button.el-button {
+      color: #ffffff;
+      height: 38px;
+      padding: 0 24px;
+      background-color: #42b983;
+    }
+  }
+}
+
+// menu
+.el-menu {
+  border-right: none;
+}
+
+.el-submenu {
+  // border-bottom: 1px solid #303133;
+  background: #1f2d3d;
+  .el-submenu__title {
+    // text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    ul{
+      li{
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .el-menu-item {
+    height: 34px;
+    line-height: 34px;
+
+  }
+}
+
+.el-menu-item {
+  height: 34px;
+  line-height: 34px;
+
+  &.is-active {
+    background-color: #409EFF !important;
+    color:#409EFF !important;
+  }
+
+  &.submenu-title-noDropdown {
+    height: 56px;
+    line-height: 56px;
+  }
+}
+
+.el-submenu__icon-arrow {
+  // right: 72px;
+}
