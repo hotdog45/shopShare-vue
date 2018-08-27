@@ -18,7 +18,7 @@
       </flexbox-item>
       <flexbox-item class="order-type-box">
         <div>
-          <span>20</span>
+          <span>30</span>
           <span>关注厂家</span>
         </div>
       </flexbox-item>
