@@ -10,7 +10,7 @@
     </tab>
 
     <div v-for="item in list">
-      <!--订单列表-->
+      <!--订单列表  -->
       <div style="background-color: #fff; padding-left: 15px;">
         <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
           <img src="../../assets/images/buyHome/icon-home-act.png" style="width: 15px;height: 15px;">
