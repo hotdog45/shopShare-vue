@@ -11,7 +11,7 @@ export const constantRouterMap = [
   { path: '/linkshares', component: asyncImport('LinkShares') },
   { path: '/pay', component: asyncImport('Pay/pay') },
   { path: '/paysucc', component: asyncImport('Pay/paysucc') },
-  { path: '/myorder', component: asyncImport('Pay/MyOrder') },
+  // { path: '/myorder', component: asyncImport('Pay/MyOrder') },
   { path: '/noadress', component: asyncImport('Pay/NoAdress') },
   { path: '/addadress', component: asyncImport('Pay/AddAddress') },
   { path: '/addresslist', component: asyncImport('Pay/AddressList') },
@@ -20,6 +20,8 @@ export const constantRouterMap = [
   { path: '/confirmorder', component: asyncImport('order/ConfirmOrder') },
   { path: '/orderdetail', component: asyncImport('order/OrderDetail') },
   { path: '/register', component: asyncImport('user/register') },
+  { path: '/myorder', component: asyncImport('My/MyOrder') },
+
 ];
 export default new Router({
   // mode: 'history', // require service support
