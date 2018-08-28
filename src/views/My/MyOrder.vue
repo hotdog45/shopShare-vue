@@ -9,7 +9,7 @@
 
     </tab>
 
-    <div v-for="item in list">
+    <div v-for="item in list" >
       <!--订单列表  -->
       <div style="background-color: #fff; padding-left: 15px;">
         <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
@@ -20,7 +20,7 @@
           <div style="margin-right: 16px;color: #FD6D1F;font-size: 14px;">{{item.statusName}}</div>
         </div>
         <div v-for="item2 in item.itemsList">
-          <div class="vux-1px-t" style="display: flex;flex-direction:row; padding-top: 15px;">
+          <div class="vux-1px-t" @click="itemDetail" style="display: flex;flex-direction:row; padding-top: 15px;">
             <img :src="item2.productThumb" style="width: 90px;height: 80px;">
             <!--商品列表-->
             <div style="margin-left: 12px; width: 60%; ">
@@ -266,6 +266,11 @@
       XButton,
     },
     methods: {},
+    itemDetail(){
+      this.$router.push({
+        path:'OrderDetail'
+      })
+    },
     mounted(){
 
     },

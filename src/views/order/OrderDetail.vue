@@ -5,15 +5,23 @@
       <div class="state-detail">等待卖家发货</div>
     </div>
     <div class="receipt-info" style="height: 87px">
-      <div v-show="receiptAddress.show">
-        <span v-show="!receiptAddress.show">+添加收货信息</span>
-        <p>{{receiptAddress.receipter}}&nbsp;&nbsp;{{receiptAddress.mobile}}</p>
-        <p>{{receiptAddress.address}}</p>
-        <x-icon class="icon-right" type="ios-arrow-forward" size="18"></x-icon>
+      <!--<div v-show="receiptAddress.show">-->
+      <div v-show="true">
+        <!--<span v-show="!receiptAddress.show">+添加收货信息</span>-->
+        <div>
+          <p style="height: 0;padding-left: 38px;font-size: 15px">{{receiptAddress.receipter}}&nbsp;&nbsp;{{receiptAddress.mobile}}</p>
+          <div style="display: flex; flex-direction: row;position: relative;">
+            <img src="../../assets/images/share/address_icon.png" style="position:absolute;bottom:20px;width: 20px;height: 20px;left:15px">
+            <p style="margin-left: 38px;font-size: 14px">{{receiptAddress.address}}</p>
+          </div>
+        </div>
       </div>
     </div>
     <group gutter="15px">
-      <cell title="萝莉童装" style="height: 43px;font-size: 14px"></cell>
+      <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
+        <cell title="萝莉童装" style="height: 43px;font-size: 14px"></cell>
+        <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px">
+      </div>
       <cell-box v-for="item in goodsList" key="item.id">
         <div class="goods-item">
           <div class="goods-img">
@@ -22,13 +30,6 @@
           <div class="goods-info">
             <p>{{item.name}}</p>
             <div style="font-size: 12px">￥{{item.price}}<span>x{{item.count}}</span></div>
-          </div>
-          <div class="goods-service">
-            <span v-show="item.serviceChecked == true">服务费:￥{{item.servicePrice}}</span>
-            <div v-show="item.serviceChecked == true">
-              数量
-              <!--<CalcNumber :count.sync="item.serviceCount"></CalcNumber>-->
-            </div>
           </div>
         </div>
       </cell-box>
@@ -49,11 +50,12 @@
         <span style="float: right">¥98.00</span>
       </div>
     </div>
-    <group gutter="15px">
-      <cell title="联系卖家" style="height: 43px;font-size: 14px" is-link>
 
-      </cell>
-    </group>
+    <div class="contact" style="display: flex; flex-direction: row;align-items: center;margin: 15px 0;background: #fff;height:43px;font-size: 14px">
+      <span style="padding: 0 17px">联系卖家:</span>
+      <span style="flex-grow:1;">萝莉童装</span>
+      <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px;margin-right: 15px">
+    </div>
 
     <div class="order-msg">
       <div>
@@ -157,13 +159,12 @@
   }
   .receipt-info {
     width: 100%;
-    height: 80px;
+    height: 87px;
     background-color: @white;
     margin-top: 0px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
   >span{
      font-size: 15px;
      display: block;
@@ -224,14 +225,6 @@
   >div span:last-of-type{
      float: right;
    }
-  }
-  .goods-service{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-
   }
   }
   .store{
