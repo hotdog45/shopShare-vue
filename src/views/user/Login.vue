@@ -30,8 +30,6 @@
         mobile: '',//用户手机号
         password: '',//用户密码
 
-
-//        req:{
         loginData:{
             mobile:'',
             password: '',
@@ -41,9 +39,6 @@
             latitude: "120.2000",
             tuiCid: ""
           },
-//          apikey:"03892de79f9611e8b36c00163e0e500c"
-//
-//        }
 
 
       }

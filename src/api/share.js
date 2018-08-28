@@ -25,5 +25,5 @@ export function getRegister(params) {
 }
 // 登录
 export function getLogin(params) {
-  return request.post('user//UserLogin', params);
+  return request.post('user/UserLogin', params);
 }
