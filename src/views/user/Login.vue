@@ -30,20 +30,18 @@
         mobile: '',//用户手机号
         password: '',//用户密码
 
-        loginData:{
-            mobile:'',
-            password: '',
-            userType: "2 ",
-            storeType: "2",
-            longitude: "100.0001",
-            latitude: "120.2000",
-            tuiCid: ""
-          },
-
-
+        loginData: {
+          mobile: '',
+          password: '',
+          userType: "2 ",
+          storeType: "2",
+          longitude: "100.0001",
+          latitude: "120.2000",
+          tuiCid: ""
+        },
       }
 
-    },
+      },
 
     components: {
       XInput,
@@ -71,7 +69,6 @@
             Cookies.set('token', res.data.token);
             this.$router.go(-1);
           }
-
         });
       },
       goRegister(){

@@ -9,12 +9,6 @@
     color:#fff;width:180px;text-align: center;" @click.native="orderDesc">查看订单详情
       </x-button>
     </div >
-    <div style="font-size: 15px">
-      <x-button style="border-radius:1px;background-color:#fff;
-    color:#FD6D1F;width: 180px; text-align: center;" @click.native="arrears">查看欠款详情
-      </x-button>
-    </div>
-
   </div>
 
 </template>
@@ -30,9 +24,6 @@
       }
     },
     methods:{
-      arrears(){
-
-      },
       orderDesc(){
 
       },
