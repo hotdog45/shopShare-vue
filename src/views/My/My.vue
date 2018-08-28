@@ -32,7 +32,6 @@
 
     </flexbox>
     <group style="margin-bottom: 10px;" gutter="15px">
-
       <cell style="font-size: 14px;height: 33px;padding: 10px 15px" title="我的订单" value="查看全部订单" is-link :link="{path:'/MyOrder',query:{selected:'All'}}"></cell>
 
       <cell-box>
