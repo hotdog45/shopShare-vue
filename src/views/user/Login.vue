@@ -1,15 +1,20 @@
 <template>
   <div class="login" style="display: flex;flex-direction:column; background-color: #fff; height: 100% ;align-items:center;">
     <div style="text-align: center;">
-      <img alt="" src="../../assets/images/logo.png" style="height:85px;width:85px;margin: 0 auto;margin-top: 100px" />
+      <img alt="" src="../../assets/images/logo.png" style="height:85px;width:85px;margin: 10px auto;margin-top: 100px" />
     </div>
 
-    <group style="width: 70%; ">
-      <img src="" alt="">
-      <x-input class="x-input" placeholder="手机号" v-model="mobile"  ></x-input>
-      <x-input class="x-input" placeholder="密码" v-model="password"></x-input>
-    </group>
-    <box gap="40px" style="width: 264px;margin-left: 55px;margin-right: 55px">
+    <div style="width: 70%;">
+      <!--<input class="x-input" placeholder="手机号" v-model="mobile"  style="width: 100%; margin-left: 20px;">-->
+      <!--<x-input disabled="false" style="height: 1px"></x-input>-->
+      <!--<input class="x-input" placeholder="密码" v-model="password" type="password" style="width: 100%;margin-left: 20px;margin-top: -10px;">-->
+      <!--<x-input disabled="false" style="height: 1px"></x-input>-->
+      <x-input class="x-input" placeholder="手机号" v-model="mobile"></x-input>
+      <x-input class="x-input" placeholder="密码" v-model="password" type="password"></x-input>
+      <x-input disabled="false"></x-input>
+    </div>
+
+    <box gap="40px" style="width: 65%;margin-left: 65px;margin-right: 50px;margin-top: 10px;">
       <x-button style="background: #FD6D1F;border-radius: 2px;font-size: 15px" type="primary" @click.native="handleLogin">登录</x-button>
     </box>
 
@@ -86,9 +91,6 @@
 
 <style scoped lang="less">
 
-  @color666 :#666666;
-  @color393a31 :#393a31;
-
   .input-box {
     background-color: #FFFFFF;
   }
@@ -98,31 +100,5 @@
     font-size: 15px;
     color: #333;
   }
-  .login {
 
-  >
-  p:first-of-type {
-    padding: 20px 15px 40px;
-    float: right;
-    color: @color666;
-    font-size: 14px;
-  }
-
-  >
-  p:last-of-type {
-    width: 100%;
-    text-align: center;
-    color: @color393a31;
-    font-size: 14px;
-    position: absolute;
-    bottom: 25px;
-  }
-
-  }
-  .message{
-    display: flex;
-    flex-direction: row;
-    margin: 0 65px;
-    justify-content: space-between;
-  }
 </style>

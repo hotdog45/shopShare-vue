@@ -71,7 +71,8 @@
 
 <script>
   import {Tab, TabItem, XButton} from 'vux'
-  import {getBuyerOrderList,getBuyerOrderPay,
+  import {getBuyerOrderList,
+    getBuyerOrderPay,
     getBuyerOrderDelete,
     getBuyerOrderReceipt,
     getBuyerOrderRefundCancel,
@@ -82,172 +83,6 @@
     name: 'myOrders',
     data() {
       return {
-//        list: [
-//          {
-//            "storeType": 2,
-//            "orderId": "15bac1446e1e4aaebd589cd7718e386a",
-//            "storeId": "7342bc02fedc4e449be602caf3a59139",
-//            "storeName": "迟工测试",
-//            "orderSn": "D18031511150000003",
-//            "orderStatus": 1,
-//            "statusCode": 7,
-//            "statusName": "待发货",
-//            "orderDate": "2018-03-15 11:39:26",
-//            "deliverStatus": 0,
-//            "payStatus": 0,
-//            "retStatus": 0,
-//            "totNum": 2,
-//            "totHnum": 2,
-//            "totAmnt": 1376,
-//            "freight": 0,
-//            "itemsList": [
-//              {
-//                "itemsNo": 2,
-//                "productId": "07218f1598814b50ba0001a577e18cd5",
-//                "productName": "人人",
-//                "productThumb": "http://productpictures.oss-cn-shanghai.aliyuncs.com/15197980292661519798030469.jpg",
-//                "productThumbWidth": 780,
-//                "productThumbHeight": 1052,
-//                "colorName": "黑色",
-//                "sizeNameJson": "[{\"sizeSno\":8,\"sizeName\":\"120CM\"}]",
-//                "attrs": "[{\"attrSno\":\"400\",\"attrName\":\"亚麻\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"化纤\"}]},{\"attrSno\":\"401\",\"attrName\":\"主面料\",\"subAttrs\":[{\"attrSno\":\"2\",\"attrName\":\"彩棉\"}]},{\"attrSno\":\"402\",\"attrName\":\"填充物\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"手塞棉\"}]},{\"attrSno\":\"403\",\"attrName\":\"厚薄\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"适中\"}]},{\"attrSno\":\"404\",\"attrName\":\"季节\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"秋季\"}]},{\"attrSno\":\"405\",\"attrName\":\"安全等级\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"C类\"}]}]",
-//                "num": 2,
-//                "hnum": 2,
-//                "price": 21,
-//                "delPrice": 688,
-//                "retStatus": 0,
-//                "cStatus": "正常"
-//              },
-//              {
-//                "itemsNo": 4,
-//                "productId": "07218f1598814b50ba0001a577e18cd5",
-//                "productName": "人人",
-//                "productThumb": "http://productpictures.oss-cn-shanghai.aliyuncs.com/15197980292661519798030469.jpg",
-//                "productThumbWidth": 780,
-//                "productThumbHeight": 1052,
-//                "colorName": "黑色",
-//                "sizeNameJson": "[{\"sizeSno\":8,\"sizeName\":\"120CM\"}]",
-//                "attrs": "[{\"attrSno\":\"400\",\"attrName\":\"亚麻\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"化纤\"}]},{\"attrSno\":\"401\",\"attrName\":\"主面料\",\"subAttrs\":[{\"attrSno\":\"2\",\"attrName\":\"彩棉\"}]},{\"attrSno\":\"402\",\"attrName\":\"填充物\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"手塞棉\"}]},{\"attrSno\":\"403\",\"attrName\":\"厚薄\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"适中\"}]},{\"attrSno\":\"404\",\"attrName\":\"季节\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"秋季\"}]},{\"attrSno\":\"405\",\"attrName\":\"安全等级\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"C类\"}]}]",
-//                "num": 2,
-//                "hnum": 2,
-//                "price": 21,
-//                "delPrice": 688,
-//                "realAmnt": 42,
-//                "retStatus": 0,
-//                "cStatus": "正常"
-//              },
-//              {
-//                "itemsNo": 5,
-//                "productId": "07218f1598814b50ba0001a577e18cd5",
-//                "productName": "人人",
-//                "productThumb": "http://productpictures.oss-cn-shanghai.aliyuncs.com/15197980292661519798030469.jpg",
-//                "productThumbWidth": 780,
-//                "productThumbHeight": 1052,
-//                "colorName": "黑色",
-//                "sizeNameJson": "[{\"sizeSno\":8,\"sizeName\":\"120CM\"}]",
-//                "attrs": "[{\"attrSno\":\"400\",\"attrName\":\"亚麻\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"化纤\"}]},{\"attrSno\":\"401\",\"attrName\":\"主面料\",\"subAttrs\":[{\"attrSno\":\"2\",\"attrName\":\"彩棉\"}]},{\"attrSno\":\"402\",\"attrName\":\"填充物\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"手塞棉\"}]},{\"attrSno\":\"403\",\"attrName\":\"厚薄\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"适中\"}]},{\"attrSno\":\"404\",\"attrName\":\"季节\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"秋季\"}]},{\"attrSno\":\"405\",\"attrName\":\"安全等级\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"C类\"}]}]",
-//                "num": 2,
-//                "hnum": 2,
-//                "price": 21,
-//                "delPrice": 688,
-//                "realAmnt": 42,
-//                "retStatus": 0,
-//                "cStatus": "正常"
-//              }
-//            ]
-//          },
-//          {
-//            "storeType": 2,
-//            "orderId": "d153506c002f4ea3b56051f2fb2d07be",
-//            "storeId": "79961da444f14eaf93404357356bd3de", "storeName": "南京市栖霞区群沃通信技术服务中心",
-//            "orderSn": "D18031513150000003",
-//            "orderStatus": 1,
-//            "statusCode": 7,
-//            "statusName": "待发货",
-//            "orderDate": "2018-03-15 13:41:52",
-//            "deliverStatus": 0,
-//            "payStatus": 0,
-//            "retStatus": 0,
-//            "totNum": 39,
-//            "totHnum": 39,
-//            "totAmnt": 26832,
-//            "freight": 0,
-//            "realAmnt": 200,
-//            "itemsList": [
-//              {
-//                "itemsNo": 1,
-//                "productId": "07218f1598814b50ba0001a577e18cd5",
-//                "productName": "人人",
-//                "productThumb": "http://productpictures.oss-cn-shanghai.aliyuncs.com/15197980292661519798030469.jpg",
-//                "productThumbWidth": 780,
-//                "productThumbHeight": 1052,
-//                "colorName": "黑色",
-//                "sizeNameJson": [{
-//                  "sizeSno": 8,
-//                  "sizeName": "120CM"
-//                }],
-//                "attrs": [{
-//                  "attrSno": "400",
-//                  "attrName": "亚麻",
-//                  "subAttrs": [{
-//                    "attrSno": "3",
-//                    "attrName": "化纤"
-//                  }]
-//                }, {
-//                  "attrSno": "401",
-//                  "attrName": "主面料",
-//                  "subAttrs": [{
-//                    "attrSno": "2",
-//                    "attrName": "彩棉"
-//                  }]
-//                }],
-//                "num": 39,
-//                "hnum": 39,
-//                "price": 688,
-//                "delPrice": 688,
-//                "realAmnt": 26832,
-//                "retStatus": 0,
-//                "cStatus": "正常"
-//              }]
-//          },
-//          {
-//            "storeType": 2,
-//            "orderId": "7e46e45afde144feaead43743dbf54b2",
-//            "storeId": "79961da444f14eaf93404357356bd3de",
-//            "storeName": "南京市栖霞区群沃通信技术服务中心",
-//            "orderSn": "D18031513150000001",
-//            "orderStatus": 1,
-//            "statusCode": 7,
-//            "statusName": "待发货",
-//            "orderDate": "2018-03-15 13:40:19",
-//            "deliverStatus": 0,
-//            "payStatus": 0,
-//            "retStatus": 0,
-//            "totNum": 39,
-//            "totHnum": 39,
-//            "totAmnt": 26832,
-//            "freight": 0,
-//            "itemsList": [{
-//              "itemsNo": 1,
-//              "productId": "07218f1598814b50ba0001a577e18cd5",
-//              "productName": "人人",
-//              "productThumb": "http://productpictures.oss-cn-shanghai.aliyuncs.com/15197980292661519798030469.jpg",
-//              "productThumbWidth": 780,
-//              "productThumbHeight": 1052,
-//              "colorName": "黑色",
-//              "sizeNameJson": "[{\"sizeSno\":8,\"sizeName\":\"120CM\"}]",
-//              "attrs": "[{\"attrSno\":\"400\",\"attrName\":\"亚麻\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"化纤\"}]},{\"attrSno\":\"401\",\"attrName\":\"主面料\",\"subAttrs\":[{\"attrSno\":\"2\",\"attrName\":\"彩棉\"}]},{\"attrSno\":\"402\",\"attrName\":\"填充物\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"手塞棉\"}]},{\"attrSno\":\"403\",\"attrName\":\"厚薄\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"适中\"}]},{\"attrSno\":\"404\",\"attrName\":\"季节\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"秋季\"}]},{\"attrSno\":\"405\",\"attrName\":\"安全等级\",\"subAttrs\":[{\"attrSno\":\"3\",\"attrName\":\"C类\"}]}]",
-//              "num": 39,
-//              "hnum": 39,
-//              "price": 688,
-//              "delPrice": 688,
-//              "realAmnt": 26832,
-//              "retStatus": 0,
-//              "cStatus": "正常"
-//            }]
-//          },
-//
-//        ],
         list:[],
         btnShow: [
           false,
@@ -304,6 +139,7 @@
       this.getOrderList();
     },
     methods: {
+      //获取列表
       getOrderList(index){
         this.orderListReq.type = index;
         getBuyerOrderList(this.orderListReq

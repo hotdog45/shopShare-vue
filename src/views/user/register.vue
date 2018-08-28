@@ -2,16 +2,16 @@
   <!-- 页面的内容 -->
   <div style="display: flex;flex-direction:column; background-color: #fff; height: 100% ;align-items:center;">
     <img src="../../assets/images/download/logo.png"
-         style="width: 100px;height: 100px;margin-top:50px; margin-bottom: 10px;">
+         style="width: 100px;height: 100px;margin-top:50px; margin-bottom: 0px;">
 
-    <group style="width: 70%; position: relative">
-      <x-input class="x-input" placeholder="手机号" v-model="mobile"  ></x-input>
+    <div style="width: 70%; position: relative" >
+      <x-input class="x-input" placeholder="手机号" v-model="mobile"></x-input>
       <x-input class="x-input" placeholder="验证码" v-model="code"></x-input>
       <button class="getCode" @click="getCode" >获取验证码</button>
       <x-input class="x-input" placeholder="密码" v-model="password" type="password"></x-input>
       <x-input class="x-input" placeholder="确认密码" v-model="password2" type="password"></x-input>
-      <!--<x-input disabled="false"></x-input>-->
-    </group>
+      <x-input disabled="false"></x-input>
+    </div>
 
     <x-button style="border-radius:1px;width: 70%; height: 44px;background: #FD6D1F;color: #fff" @click.native="register">注册</x-button>
     <div style="margin-top: 61px;">注册即表示同意大风车商城规则</div>
