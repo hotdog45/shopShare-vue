@@ -31,7 +31,7 @@
 
 
         inputText:{
-          loginData:{
+          data:{
             mobile:'',
             password: '',
             userType: "2 ",
@@ -40,7 +40,12 @@
             latitude: "120.2000",
             tuiCid: ""
           },
-          apikey:"03892de79f9611e8b36c00163e0e500c"
+          apikey:"03892de79f9611e8b36c00163e0e500c",
+//          device:'1',
+//          froms:'1',
+//          timestamp:'1',
+//          sign:'1',
+//          version:"1",
 
         }
 
@@ -66,9 +71,9 @@
           return;
         }
 
-        this.loginData.mobile = this.mobile;
-        this.loginData.password = this.password;
-        getLogin(this.loginData).then((res) => {
+        this.inputText.data.mobile = this.mobile;
+        this.inputText.data.password = this.password;
+        getLogin(this.inputText).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg, );
           Cookies.set('token', res.data.token);

@@ -24,7 +24,7 @@
 
 <script>
   /* 页面的js */
-  import {XInput, Tab, TabItem, XButton,Toast,ToastPlugin} from 'vux'
+  import {Group,XInput, Tab, TabItem, XButton,Toast,ToastPlugin} from 'vux'
 
   import { getPhoneCode ,getRegister} from '@/api/share';
   import Cookies from 'js-cookie';
@@ -94,6 +94,7 @@
 
     },
     components: {
+      Group,
       Tab,
       TabItem,
       XButton,
