@@ -21,6 +21,7 @@
 <script>
   import {XInput, Box, Group, XButton} from 'vux'
   import {getLogin} from '@/api/share';
+  import Cookies from 'js-cookie';
 
   export default {
     name: 'login',
@@ -30,8 +31,8 @@
         password: '',//用户密码
 
 
-        inputText:{
-          loginData:{
+//        req:{
+        loginData:{
             mobile:'',
             password: '',
             userType: "2 ",
@@ -40,9 +41,9 @@
             latitude: "120.2000",
             tuiCid: ""
           },
-          apikey:"03892de79f9611e8b36c00163e0e500c"
-
-        }
+//          apikey:"03892de79f9611e8b36c00163e0e500c"
+//
+//        }
 
 
       }
@@ -71,8 +72,11 @@
         getLogin(this.loginData).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg, );
-          Cookies.set('token', res.data.token);
-          this.$router.go(-1);
+          if (res.status == 0){
+            Cookies.set('token', res.data.token);
+            this.$router.go(-1);
+          }
+
         });
       },
       goRegister(){
