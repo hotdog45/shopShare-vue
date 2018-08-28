@@ -56,10 +56,10 @@ newRquest.interceptors.request.use(
 newRquest.interceptors.response.use(
   (response) => {
     const res = response.data;
-    const { status } = res;
+    const { msg, status } = res;
 
     if (status !== 0) {
-      // console.log('msg', msg);
+      console.log('msg', msg);
     }
 
     return res;
