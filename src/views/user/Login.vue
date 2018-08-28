@@ -5,6 +5,7 @@
     </div>
 
     <group style="width: 70%; ">
+      <img src="" alt="">
       <x-input class="x-input" placeholder="手机号" v-model="mobile"  ></x-input>
       <x-input class="x-input" placeholder="密码" v-model="password"></x-input>
     </group>
@@ -67,9 +68,12 @@
           this.$vux.toast.text(res.msg, );
           if (res.status == 0){
             Cookies.set('token', res.data.token);
-            this.$router.go(-1);
+//            this.$router.go(-1);
           }
         });
+        this.$router.push({
+          path:'/confirmorder'
+        })
       },
       goRegister(){
         this.$router.push({
@@ -114,11 +118,6 @@
     bottom: 25px;
   }
 
-  }
-  .icon-wx {
-    width: 18px;
-    height: 14px;
-    margin-right: 6px;
   }
   .message{
     display: flex;

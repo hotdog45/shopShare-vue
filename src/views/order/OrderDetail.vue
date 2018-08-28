@@ -7,7 +7,6 @@
     <div class="receipt-info" style="height: 87px">
       <div v-show="receiptAddress.show">
         <span v-show="!receiptAddress.show">+添加收货信息</span>
-
         <p>{{receiptAddress.receipter}}&nbsp;&nbsp;{{receiptAddress.mobile}}</p>
         <p>{{receiptAddress.address}}</p>
         <x-icon class="icon-right" type="ios-arrow-forward" size="18"></x-icon>
@@ -69,22 +68,25 @@
     </div>
 
     <div class="cacel-order">
-      <x-button type="primary" style="font-size: 12px;background: #ffffff;">取消订单</x-button>
+      <button @click="cancelOrder" v-model="show1">取消订单</button>
+      <actionsheet v-model="show1" :menus="menus1" :close-on-clicking-mask="false" show-cancel @on-click-mask="console('on click mask')"></actionsheet>
 
-      <button>取消订单</button>
     </div>
-
-
   </div>
 </template>
 
 <script>
-  import { Group, Cell, CellBox, Datetime, CheckIcon,XNumber,XButton } from 'vux'
+  import { Group, Cell, CellBox, Datetime, CheckIcon,XNumber,XButton,Actionsheet } from 'vux'
   //  import CalcNumber from '../../components/CalcNumber.vue'
   export default {
     name: 'orderDetails',
     data() {
       return {
+            show1: false,
+            menus1: {
+              menu1: "七天无理由退换货",
+              menu2: "信息填写错误"
+            },
         receiptAddress:{//收货地址信息
           show:false,
           receipter:'张三',
@@ -121,6 +123,9 @@
         this.$router.push({
           path:'/MyAddress'
         })
+      },
+      cancelOrder(){
+
       }
     },
     components: {
@@ -130,7 +135,8 @@
       Datetime,
       CheckIcon,
       XNumber,
-      XButton
+      XButton,
+      Actionsheet
 //      CalcNumber
     }
   }
@@ -148,9 +154,6 @@
   }
   .state-detail{
     margin-left: 57px;
-  }
-  .vux-x-icon {
-    fill: #AAAAAA;
   }
   .receipt-info {
     width: 100%;
@@ -294,7 +297,6 @@
 
   }
   .cacel-order{
-    position: relative;
     height: 49px;
     line-height: 49px;
     width: 100%;
@@ -302,14 +304,17 @@
     margin-bottom: 0;
     position: fixed;
     bottom: 0;
-    font-size:14px;
     button{
       position: absolute;
-      right: 15px;
+      right: 21px;
       top:10px;
       bottom: 10px;
-      width: 69px;
+      width: 79px;
       height: 29px;
+      font-size:14px;
+      border-style: solid;
+      border-width: 1px;
+      background-color: @white;
     }
   }
 </style>

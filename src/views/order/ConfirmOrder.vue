@@ -8,27 +8,19 @@
         <x-icon class="icon-right" type="ios-arrow-forward" size="18"></x-icon>
       </div>
     </div>
-    <group gutter="15px">
-      <cell title="萝莉童装" style="height: 43px;font-size: 14px"></cell>
+    <group gutter="15px" style="font-size: 14px">
+      <cell title="萝莉童装" style="height: 43px"></cell>
       <cell-box v-for="item in goodsList" key="item.id">
         <div class="goods-item">
           <div class="goods-img">
             <img />
           </div>
           <div class="goods-info">
-            <p>{{item.name}}</p>
+            <p style="margin-top: 0px">{{item.name}}</p>
             <div style="font-size: 12px">￥{{item.price}}<span>x{{item.count}}</span></div>
-          </div>
-          <div class="goods-service">
-            <span v-show="item.serviceChecked == true">服务费:￥{{item.servicePrice}}</span>
-            <div v-show="item.serviceChecked == true">
-              数量
-              <!--<CalcNumber :count.sync="item.serviceCount"></CalcNumber>-->
-            </div>
           </div>
         </div>
       </cell-box>
-
     </group>
     <group style="margin-bottom: 50px;" gutter="15px" >
       <x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0" @on-change="change"></x-number>
@@ -38,9 +30,7 @@
       <cell style="padding-left: 152px;height: 49px;font-size: 14px" title="共50件商品 合计: ¥2900"></cell>
     </group >
       <x-button  type="primary" style="border-radius:1px;background-color:#FD6D1F;font-size: 15px;
-    color:#fff;width: 320px; text-align: center;" @click.native="submitOrder">提交订单</x-button>
-
-
+    color:#fff;width: 320px; text-align: center" @click.native="submitOrder">提交订单</x-button>
   </div>
 </template>
 
@@ -110,14 +100,12 @@
 <style scoped lang="less">
   @white: #FFFFFF;
   @black:#393a3e;
-  .vux-x-icon {
-    fill: #AAAAAA;
-  }
+
   .receipt-info {
     width: 100%;
-    height: 80px;
+    height: 43px;
     background-color: @white;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -182,14 +170,6 @@
   >div span:last-of-type{
      float: right;
    }
-  }
-  .goods-service{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-
   }
   }
   .store{

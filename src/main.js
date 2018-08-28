@@ -20,6 +20,7 @@ import Icon from './components/Icon';
 import './utils/bridge';
 import './permission'; // permission control
 import  { ToastPlugin, LoadingPlugin } from 'vux'
+
 Vue.use(ToastPlugin)
 
 Vue.config.productionTip = false;

@@ -1,16 +1,16 @@
 <template>
   <div class="addAddress">
     <group >
-      <x-input style="font-size: 16px;" title="收件人"  placeholder="请输入您的姓名" v-model="name" required text-align="left" label-width="80px"></x-input>
-      <x-input style="font-size: 16px;" title="手机号" name="mobile" placeholder="请输入您的手机号" v-model="mobile" keyboard="number" is-type="china-mobile" required text-align="left" label-width="80px"></x-input>
+      <x-input title="收件人"  placeholder="请输入您的姓名" v-model="name" required text-align="left" label-width="80px"></x-input>
+      <x-input title="联系电话" name="mobile" placeholder="请输入您的手机号" v-model="mobile" keyboard="number" is-type="china-mobile" required text-align="left" label-width="80px"></x-input>
     </group>
     <group>
-      <x-address style="font-size: 16px;" title="地址选择" v-model="addressValue" raw-value :list="addressData" value-text-align="left"></x-address>
-      <x-textarea style="font-size: 16px;" title="详细信息" placeholder="请填写详细信息" :show-counter="false" :rows="3"></x-textarea>
+      <x-address title="所在地区" v-model="addressValue" raw-value :list="addressData" value-text-align="left"></x-address>
+      <x-textarea title="详细地址" placeholder="请填写详细信息" :show-counter="false" :rows="3"></x-textarea>
     </group>
     <!--<check-icon style="font-size: 16px;"class="is-default" :value.sync="isDefault" @click.native="handleCheckedItem">默认地址</check-icon>-->
     <group>
-      <x-switch style="font-size: 16px;" title="设为默认地址" ></x-switch>
+      <x-switch title="设为默认地址" ></x-switch>
     </group>
 
     <x-button style="background: #FD6D1F" type="primary" class="add-btn" @click.native="handleAddAddress">确认添加</x-button>
