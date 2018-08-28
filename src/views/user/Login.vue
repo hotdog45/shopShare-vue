@@ -33,8 +33,8 @@
         loginData: {
           mobile: '',
           password: '',
-          userType: "2 ",
-          storeType: "2",
+          userType: "1",
+          storeType: "1",
           longitude: "100.0001",
           latitude: "120.2000",
           tuiCid: ""
