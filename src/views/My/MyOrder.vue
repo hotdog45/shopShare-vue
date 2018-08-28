@@ -1,14 +1,14 @@
 <template>
   <div class="myOrders">
     <tab :line-width="2" custom-bar-width="75px" active-color="#FD6D1F" default-color="#333333" scroll-threshold="5">
-      <tab-item :selected="orderListReq.type == 0" @on-item-click="getOrderList">全部</tab-item>
-      <tab-item :selected="orderListReq.type == 1" @on-item-click="getOrderList">待付款</tab-item>
-      <tab-item :selected="orderListReq.type == 2" @on-item-click="getOrderList">待发货</tab-item>
-      <tab-item :selected="orderListReq.type == 3" @on-item-click="getOrderList">待收货</tab-item>
-      <tab-item :selected="orderListReq.type == 4" @on-item-click="getOrderList">待评价</tab-item>
+      <tab-item @on-item-click="getOrderList">全部</tab-item>
+      <tab-item @on-item-click="getOrderList">待付款</tab-item>
+      <tab-item @on-item-click="getOrderList">待发货</tab-item>
+      <tab-item @on-item-click="getOrderList">待收货</tab-item>
+      <tab-item @on-item-click="getOrderList">待评价</tab-item>
 
     </tab>
-    <div v-for="item in list">
+    <div v-for="(item,index) in list">
       <!--订单列表  -->
       <div style="background-color: #fff; padding-left: 15px;">
         <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
@@ -53,14 +53,14 @@
         </div>
         <!--底部按钮-->
         <div class="vux-1px-t" style="display: flex;flex-direction:row;justify-content:flex-end;align-items: center;">
-          <button class="btn1" v-show="btnShow[0]" @click="btn1click">取消订单</button>
+          <button class="btn1" v-show="btnShow[0]" @click="btn1click(index)">取消订单</button>
           <!--<button class="btn2" v-show="btnShow[1]" @click="btn2click">查看拼包凭证</button> &lt;!&ndash;86&ndash;&gt;-->
-          <button class="btn3" v-show="btnShow[2]" @click="btn3click">付款</button>
-          <button class="btn4" v-show="btnShow[3]" @click="btn4click">取消退款</button>
-          <button class="btn5" v-show="btnShow[4]" @click="btn5click">删除订单</button>
+          <button class="btn3" v-show="btnShow[2]" @click="btn3click(index)">付款</button>
+          <button class="btn4" v-show="btnShow[3]" @click="btn4click(index)">取消退款</button>
+          <button class="btn5" v-show="btnShow[4]" @click="btn5click(index)">删除订单</button>
           <!--<button class="btn6" v-show="btnShow[5]" @click="btn6click">申请发票</button>-->
           <!--<button class="btn7" v-show="btnShow[6]" @click="btn7click">查看物流</button>-->
-          <button class="btn8" v-show="btnShow[7]" @click="btn8click">确认收货</button>
+          <button class="btn8" v-show="btnShow[7]" @click="btn8click(index)">确认收货</button>
           <!--<button class="btn9" v-show="btnShow[8]" @click="btn9click">去评价</button>-->
         </div>
       </div>
@@ -71,7 +71,12 @@
 
 <script>
   import {Tab, TabItem, XButton} from 'vux'
-  import {getBuyerOrderList} from '@/api/share';
+  import {getBuyerOrderList,getBuyerOrderPay,
+    getBuyerOrderDelete,
+    getBuyerOrderReceipt,
+    getBuyerOrderRefundCancel,
+    getBuyerOrderCancel,
+  } from '@/api/share';
   //
   export default {
     name: 'myOrders',
@@ -286,7 +291,7 @@
         },
         orderReceipt:{
           orderId:"",//必选 订单号
-          itemsNo:"",  //必选 订单子序号
+          itemsNo:[],  //必选 订单子序号
         },
       }
     },
@@ -313,36 +318,45 @@
         });
       },
       //取消订单
-      btn1click(){
+      btn1click(index){
         getBuyerOrderCancel().then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
       },
       //付款
-      btn3click(){
+      btn3click(index){
         getBuyerOrderPay().then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
       },
       //取消退款
-      btn4click(){
+      btn4click(index){
         getBuyerOrderRefundCancel().then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
       },
       //删除订单
-      btn5click(){
+      btn5click(index){
+        this.orderDelete.orderId = this.list[index].orderId;
         getBuyerOrderDelete().then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
       },
       //确认收货
-      btn8click(){
-        getBuyerOrderReceipt().then((res) => {
+      btn8click(index){
+        console.log("test"+index);
+        this.orderReceipt.orderId = this.list[index].orderId;
+        for (var i=0; i< this.list[index].itemsList.length;i++){
+          let itemsNo=  this.list[index].itemsList[i].itemsNo;
+          console.log("itemsNo::::::"+itemsNo);
+          this.orderReceipt.itemsNo.push(itemsNo)
+        }
+        console.log("this.orderReceipt::::::"+this.orderReceipt);
+        getBuyerOrderReceipt(this.orderReceipt).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
