@@ -19,9 +19,9 @@ const newRquest = axios.create({
     if (token) {
       req.token = token;
       // req.token = 'ADwHN1RlUTBVbFc3VjEPNVk4ATcNeQc9ACcNbA5xUTddfFZiAS9TNVdwUUhUQVQC';
-    } /* else {
+    }  else {
       req.token = 'ADwHN1RlUTBVbFc3VjEPNVk4ATcNeQc9ACcNbA5xUTddfFZiAS9TNVdwUUhUQVQC';
-    } */
+    }
 
     return querystring.stringify(req);
   },
