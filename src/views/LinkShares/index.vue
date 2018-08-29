@@ -133,8 +133,8 @@
     data() {
       return {
         pid: {
-          // 66ca3b6fd2e244a9962bb91f66a7c968
-          productId: '',
+          //
+          productId: '66ca3b6fd2e244a9962bb91f66a7c968',
         },
         datas: {
           productName :"",
@@ -155,11 +155,11 @@
         const { query: { productId } } = this.$route;
         this.pid.productId = productId;
 //      images
-//      getShareSecret(this.pid).then((res) => {
-//        console.log(res.data);
+      getShareSecret(this.pid).then((res) => {
+        console.log(res.data);
 //        if (res.data ==null &&  res.data.images.length == 0) return;
-//        this.PassInfo = res.data;
-//      });
+        this.PassInfo = res.data;
+      });
       },
       // 编辑密码
       passPage() {

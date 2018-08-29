@@ -71,7 +71,7 @@
         <span>交易号: 6788434098090</span>
       </div>
     </div>
-    //占位,防止覆盖
+    <!--//占位,防止覆盖-->
     <div style="height: 49px;width: 100%">
 
     </div>

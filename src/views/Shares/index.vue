@@ -83,8 +83,23 @@
         </div>
       </div>
     </div>
-    <div class="share-footer">
-      <tab-item></tab-item>
+    <div class="share-footer" >
+
+      <div class="btnStyle">
+        <img src="@/assets/images/share/comment.png">
+        <div @click="goChat">聊天</div>
+      </div>
+      <div class="btnStyle">
+        <img src="@/assets/images/share/comment.png" >
+        <div @click="goShoppingCar" >购物车</div>
+      </div>
+      <div @click="collectionShop" class="btnStyle">
+        <img src="@/assets/images/share/stars.png" v-show="true">
+        <img src="@/assets/images/share/stars_unselected.png" v-show="false" >
+        <div >收藏</div>
+      </div>
+      <div @click="addShoppingCar" style="flex-grow:3;background: #FD6D1F;color: #fff;font-size: 14px;">加入购物车</div>
+      <div @click="goShopping" style="flex-grow:3;background-color: #FB3232;color: #fff;font-size: 14px;">立即购买</div>
     </div>
      <popup v-model="parShow"  @click.native ="parShow = false">
        <parameter :datas = "datas" ></parameter>
@@ -93,7 +108,7 @@
 </template>
 
 <script>
-import { Tabbar, TabbarItem, Flexbox, FlexboxItem, Group, Cell, CellBox, Divider, XTable, Popup } from 'vux';
+import { Tabbar, TabbarItem, Flexbox, FlexboxItem, Group,Cell, CellBox, Divider, XTable, Popup } from 'vux';
 import { getShareList } from '@/api/share';
 import Parameter from './components/Parameter';
 import TabItem from './components/TabItem';
@@ -107,17 +122,20 @@ export default {
     FlexboxItem,
     Cell,
     Group,
-    CellBox,
+//    CellBox,
     Divider,
     XTable,
     Popup,
     Parameter,
     TabItem,
+    CellBox,
   },
+  //productId: '66ca3b6fd2e244a9962bb91f66a7c968',
   data() {
     return {
       product: {
-        productId: '66ca3b6fd2e244a9962bb91f66a7c968',
+
+        productId: "55db7b5dec744310ac701083a3bf8d17",
         // productId: '902e97a5d65d11e79ad500163e0e500c',
       },
       datas: null,
@@ -135,10 +153,30 @@ export default {
         this.datas = res.data;
       });
     },
+    //去聊天
+    goChat(){
+
+    },
+    //收藏或取消收藏
+    collectionShop(){
+
+    },
+    //去购物车
+    goShoppingCar(){
+
+    },
+    //立即购买
+    goShopping(){
+
+    },
+    //加购物车
+    addShoppingCar(){
+
+    },
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" rel="stylesheet/scss">
   .share{
     p{
       margin: 0;
@@ -184,7 +222,7 @@ export default {
   }
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss" scoped rel="stylesheet/scss">
   .share{
     .share-detail{
       padding-bottom: 50px;
@@ -289,13 +327,41 @@ export default {
       }
     }
     .share-footer{
+      background:#fff;
       position: fixed;
+      display: flex;
+      flex-direction: row;
       right: 0;
       left: 0;
       z-index: 1030;
       bottom: 0;
       margin-bottom: 0;
       border-width: 1px 0 0;
+      /*align-items: center;*/
+      >div{
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 11px;
+      }
+    }
+  }
+  .btnStyle{
+    width:50px;
+    color: #333333;
+    opacity: 0.6;
+    border-right: 1px solid #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    >img{
+      width:15px ;
+      height:15px;
+      margin-top: 5px;
+    }
+    >div{
+      margin-top: -8px;
+      font-size: 10px;
     }
   }
 </style>
