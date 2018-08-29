@@ -2,14 +2,14 @@
   <div class="order-details">
     <div class="state">
       <span></span>
-      <div class="state-detail">等待卖家发货</div>
+      <div class="state-detail">{{receiptAddress.statusName}}</div>
     </div>
     <div class="receipt-info" style="height: 87px">
       <!--<div v-show="receiptAddress.show">-->
       <div v-show="true">
         <!--<span v-show="!receiptAddress.show">+添加收货信息</span>-->
         <div>
-          <p style="height: 0;padding-left: 38px;font-size: 15px">{{receiptAddress.receipter}}&nbsp;&nbsp;{{receiptAddress.mobile}}</p>
+          <p style="height: 0;padding-left: 38px;font-size: 15px">{{receiptAddress.consignee}}&nbsp;&nbsp;{{receiptAddress.mobile}}</p>
           <div style="display: flex; flex-direction: row;position: relative;">
             <img src="../../assets/images/share/address_icon.png"
                  style="position:absolute;bottom:20px;width: 20px;height: 20px;left:15px">
@@ -18,10 +18,11 @@
         </div>
       </div>
     </div>
-    <group gutter="15px">
-      <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
-        <cell title="萝莉童装" style="height: 43px;font-size: 14px"></cell>
-        <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px">
+
+    <div style="background-color: #fff">
+      <div style="display: flex; flex-direction: row; height: 43px; align-items: center">
+        <div style="height: 43px;font-size: 14px;padding: 15px">萝莉童装</div>
+        <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px;">
       </div>
       <cell-box v-for="item in goodsList" key="item.id">
         <div class="goods-item">
@@ -35,7 +36,7 @@
         </div>
       </cell-box>
 
-    </group>
+    </div>
 
     <div class="order-price">
       <div class="price-detail">
@@ -98,28 +99,25 @@
           menu2: "信息填写错误"
         },
         receiptAddress: {//收货地址信息
-          show: false,
-          receipter: '张三',
-          mobile: '18321976666',
-          address: '上海上海市浦东新区东靖路558号'
+          statusName:"",
+          consignee: '',
+          mobile: '',
+          address: '',
+
         },
-        storeInfo: {//发货门店信息
-          show: false,
-          name: '上海欧冰蓝贸易有限公司',
-          mobile: '021-12374125',
-          address: '上海市宝山区昌邑路15号简配路B馆'
-        },
-        receiptTime: '',//收货时间
-        orderNumber: '1928735913467242',//订单编号
+        itemsList:[],
         goodsList: [{
-          id: '132412352',
-          name: '媛媛公主童装女童夏季背心裙儿童夏装长裙中大童碎花',
+          productId: '',
+          productThumb:"",
+          productName: '媛媛公主童装女童夏季背心裙儿童夏装长裙中大童碎花',
           price: 2351,
-          count: 1,
-          serviceChecked: false,
-          servicePrice: '20.00',
-          serviceCount: 1
+          num: 1,
         }],
+        orderSn: '1928735913467242',//订单编号
+        orderDate:"",
+        transSn:"",
+
+
         orderDetail:{
           orderId:"",//必选 订单号
         },
