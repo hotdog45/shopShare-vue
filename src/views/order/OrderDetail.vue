@@ -124,11 +124,16 @@
     },
     methods: {
 
+      /**
+       * 请求订单详情
+       * @param orderid
+       */
       showOrderDetail(orderid){
         getOrderDetail(orderid).then((res) => {
           console.log(res);
         });
       },
+
       handleCheckedItem()
       {
 
@@ -146,13 +151,13 @@
       {
         this.show = true;
 
-      }
-      ,
+      },
 
       console(msg)
       {
         console.log(msg)
       },
+      //弹出框,打印
       click(key)
       {
         console.log(key)
