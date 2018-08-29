@@ -116,7 +116,10 @@
           serviceChecked: false,
           servicePrice: '20.00',
           serviceCount: 1
-        }]
+        }],
+        orderDetail:{
+          orderId:"",//必选 订单号
+        },
       }
     },
     created() {
@@ -124,35 +127,36 @@
     },
     methods: {
 
-      showOrderDetail(orderid){
-        getOrderDetail(orderid).then((res) => {
+      showOrderDetail(){
+        this.Detail.orderId = this.$route.query.orderId;
+        getOrderDetail(this.Detail).then((res) => {
           console.log(res);
         });
       },
+
       handleCheckedItem()
       {
 
-      }
-      ,
+      },
+
       toChooseAddress()
       {
         this.$router.push({
           path: '/MyAddress'
         })
-      }
-      ,
+      },
 
       cancelOrder()
       {
         this.show = true;
 
-      }
-      ,
+      },
 
       console(msg)
       {
         console.log(msg)
       },
+
       click(key)
       {
         console.log(key)
