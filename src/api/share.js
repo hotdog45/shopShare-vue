@@ -28,6 +28,12 @@ export function getRegister(params) {
 export function getBuyerOrderList(params) {
   return request.post('order/BuyerOrderList', params);
 }
+
+// 订单详情
+export function getOrderDetail(params) {
+  return request.post('order/BuyerOrderList', params);
+}
+
 // 买家订单付款
 export function getBuyerOrderPay(params) {
   return request.post('order/BuyerOrderPay', params);

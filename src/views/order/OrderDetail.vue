@@ -84,6 +84,7 @@
 <script>
   import {Group, Cell, CellBox, Datetime, CheckIcon, XNumber, XButton, Actionsheet} from 'vux'
   //  import CalcNumber from '../../components/CalcNumber.vue'
+  import {getOrderDetail} from '@/api/share';
   export default {
     name: 'orderDetails',
     data() {

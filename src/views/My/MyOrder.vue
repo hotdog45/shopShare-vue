@@ -177,7 +177,7 @@
       //删除订单
       btn5click(index){
         this.orderDelete.orderId = this.list[index].orderId;
-        getBuyerOrderDelete().then((res) => {
+        getBuyerOrderDelete(orderDelete).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
