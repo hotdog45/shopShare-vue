@@ -112,23 +112,21 @@
           serviceChecked:false,
           servicePrice:'20.00',
           serviceCount:1
-        }]
+        }],
+
+        orderDetails:{
+          orderId:"",//必选 订单号
+        },
       }
     },
+    created() {
+      this.showOrderDetail();
+    },
     methods:{
-      change (value) {
-        console.log('change', value)
-      },
-      handleCheckedItem(){
-
-      },
-      toChooseAddress(){
-        this.$router.push({
-          path:'/MyAddress'
-        })
-      },
-      cancelOrder(){
-
+      showOrderDetail(index){
+        getOrderDetail().then((res) => {
+          console.log(res);
+        });
       }
     },
     components: {
