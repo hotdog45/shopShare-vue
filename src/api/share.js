@@ -31,7 +31,7 @@ export function getBuyerOrderList(params) {
 
 // 订单详情
 export function getOrderDetail(params) {
-  return request.post('order/BuyerOrderList', params);
+  return request.post('order/BuyerOrderDetail', params);
 }
 
 // 买家订单付款

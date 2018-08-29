@@ -136,7 +136,7 @@
       XButton,
     },
     created() {
-      this.getOrderList();
+      this.getOrderList(0);
     },
     methods: {
       //获取列表

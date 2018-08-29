@@ -70,10 +70,13 @@
         <span>交易号: 6788434098090</span>
       </div>
     </div>
+    //占位,防止覆盖
+    <div style="height: 49px;width: 100%">
+
+    </div>
 
     <div class="cacel-order">
       <button @click="cancelOrder" v-model="show">取消订单</button>
-
 
     </div>
     <actionsheet v-model="show" :menus="menus" @on-click-menu="click" show-cancel></actionsheet>
@@ -132,8 +135,8 @@
        * @param orderid
        */
       showOrderDetail(){
-        this.Detail.orderId = this.$route.query.orderId;
-        getOrderDetail(this.Detail).then((res) => {
+        this.orderDetail.orderId = this.$route.query.orderId;
+        getOrderDetail(this.orderDetail).then((res) => {
           console.log(res);
         });
       },
