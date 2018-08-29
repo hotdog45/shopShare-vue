@@ -10,7 +10,7 @@
     </tab>
     <div v-for="(item,index) in list">
       <!--订单列表  -->
-      <div style="background-color: #fff; padding-left: 15px;">
+      <div style="background-color: #fff; padding-left: 15px;" @click="itemDetail(index)">
         <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
           <img src="../../assets/images/buyHome/icon-home-act.png" style="width: 15px;height: 15px;">
           <div style="margin: 0 3px 0 7px; color: #333333;font-size: 14px;">{{item.storeName}}</div>
@@ -19,7 +19,7 @@
           <div style="margin-right: 16px;color: #FD6D1F;font-size: 14px;">{{item.statusName}}</div>
         </div>
         <div v-for="item2 in item.itemsList">
-          <div class="vux-1px-t" @click="itemDetail" style="display: flex;flex-direction:row; padding-top: 15px;">
+          <div class="vux-1px-t"  style="display: flex;flex-direction:row; padding-top: 15px;">
             <img :src="item2.productThumb" style="width: 90px;height: 80px;">
             <!--商品列表-->
             <div style="margin-left: 12px; width: 60%; ">
@@ -198,9 +198,10 @@
         });
       },
 
-      itemDetail(){
+      itemDetail(index){
         this.$router.push({
-          path: 'OrderDetail'
+          path: 'OrderDetail',
+          query: { orderId:this.list[index].orderId }
         })
       },
     },
