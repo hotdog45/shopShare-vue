@@ -71,7 +71,8 @@
 
 <script>
   import {Tab, TabItem, XButton} from 'vux'
-  import {getBuyerOrderList,getBuyerOrderPay,
+  import {getBuyerOrderList,
+    getBuyerOrderPay,
     getBuyerOrderDelete,
     getBuyerOrderReceipt,
     getBuyerOrderRefundCancel,
@@ -138,6 +139,7 @@
       this.getOrderList();
     },
     methods: {
+      //获取列表
       getOrderList(index){
         this.orderListReq.type = index;
         getBuyerOrderList(this.orderListReq
