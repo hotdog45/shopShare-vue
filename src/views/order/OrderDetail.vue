@@ -127,6 +127,10 @@
     },
     methods: {
 
+      /**
+       * 请求订单详情
+       * @param orderid
+       */
       showOrderDetail(){
         this.Detail.orderId = this.$route.query.orderId;
         getOrderDetail(this.Detail).then((res) => {
@@ -156,7 +160,7 @@
       {
         console.log(msg)
       },
-
+      //弹出框,打印
       click(key)
       {
         console.log(key)
