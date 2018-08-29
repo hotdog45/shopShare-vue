@@ -10,7 +10,7 @@
       <!--<input class="x-input" placeholder="密码" v-model="password" type="password" style="width: 100%;margin-left: 20px;margin-top: -10px;">-->
       <!--<x-input disabled="false" style="height: 1px"></x-input>-->
       <x-input class="x-input" placeholder="手机号" v-model="mobile"></x-input>
-      <x-input class="x-input" placeholder="密码" v-model="password" type="password"></x-input>
+      <x-input class="x-input" placeholder="密码" v-model="password" type="password" ></x-input>
       <x-input disabled="false"></x-input>
     </div>
 

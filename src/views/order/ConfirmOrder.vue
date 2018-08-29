@@ -1,5 +1,5 @@
 <template>
-  <div class="orderDetails">
+  <div class="orderDetails" style="height: 100%">
     <div class="receipt-info" @click="toChooseAddress" style="height: 87px">
       <span v-show="!receiptAddress.show">+添加收货信息</span>
       <div v-show="receiptAddress.show">
@@ -8,29 +8,42 @@
         <x-icon class="icon-right" type="ios-arrow-forward" size="18"></x-icon>
       </div>
     </div>
-    <group gutter="15px" style="font-size: 14px">
-      <cell title="萝莉童装" style="height: 43px"></cell>
+    <div style="background-color: #fff">
+      <div style="display: flex; flex-direction: row; height: 43px; align-items: center">
+        <div style="height: 43px;font-size: 14px;padding: 15px">萝莉童装</div>
+        <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px;">
+      </div>
       <cell-box v-for="item in goodsList" key="item.id">
         <div class="goods-item">
           <div class="goods-img">
-            <img />
+            <img/>
           </div>
           <div class="goods-info">
-            <p style="margin-top: 0px">{{item.name}}</p>
+            <p>{{item.name}}</p>
             <div style="font-size: 12px">￥{{item.price}}<span>x{{item.count}}</span></div>
           </div>
         </div>
       </cell-box>
-    </group>
-    <group style="margin-bottom: 50px;" gutter="15px" >
-      <x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0" @on-change="change"></x-number>
+
+    </div>
+
+    <div style="margin-bottom: 50px;margin-top: 15px;background-color: #fff" >
+      <x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0" width="34px" @on-change="change"></x-number>
       <cell style="height: 49px;font-size: 14px" title="优惠券" value="满200减200" is-link v-show="!storeInfo.show"></cell>
       <cell style="height: 49px;font-size: 14px" title="配送方送" value="快递 免邮" is-link ></cell>
       <cell style="height: 49px;font-size: 14px" title="备注"></cell>
-      <cell style="padding-left: 152px;height: 49px;font-size: 14px" title="共50件商品 合计: ¥2900"></cell>
-    </group >
-      <x-button  type="primary" style="border-radius:1px;background-color:#FD6D1F;font-size: 15px;
-    color:#fff;width: 320px; text-align: center" @click.native="submitOrder">提交订单</x-button>
+      <cell >
+        <div class="total">
+          共50件商品 &nbsp;合计&nbsp;&nbsp;<span style="color:#FD6D1F;font-size: 14px;padding-right: 30px">￥247100.00</span>
+        </div>
+      </cell>
+    </div >
+    <x-button style="background: #FD6D1F" type="primary" class="sub-btn" @click.native="handleAddAddress">提交订单</x-button>
+
+    <!--<div>-->
+      <!--<x-button  type="primary" style="border-radius:1px;background-color:#FD6D1F;font-size: 15px;-->
+    <!--color:#fff;width: 320px; text-align: center" @click.native="submitOrder">提交订单</x-button>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -127,6 +140,9 @@
     font-size: 13px;
     color: #626262;
   }
+    .total{
+      color: #000000;
+    }
   .icon-right{
     position: absolute;
     right: 10px;
@@ -208,5 +224,12 @@
     font-size: 18px;
   }
   }
+  }
+  .sub-btn{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+    height: 50px;
   }
 </style>
