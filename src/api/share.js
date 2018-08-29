@@ -41,7 +41,7 @@ export function getBuyerOrderPay(params) {
 
 //  永久性删除订单
 export function getBuyerOrderDelete(params) {
-  return request.post('order/BuyerOrderDelete', params);
+  return request.post('order/BuyerOrderDel', params);
 }
 // 订单确认收货
 export function getBuyerOrderReceipt(params) {

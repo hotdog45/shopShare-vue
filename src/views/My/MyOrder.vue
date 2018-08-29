@@ -1,16 +1,17 @@
 <template>
   <div class="myOrders">
-    <tab :line-width="2" custom-bar-width="75px" active-color="#FD6D1F" default-color="#333333" scroll-threshold="5">
-      <tab-item @on-item-click="getOrderList">全部</tab-item>
+    <!--//顶部-->
+    <tab :line-width=2 custom-bar-width="75px" active-color="#FD6D1F" default-color="#333333" scroll-threshold = 5 >
+      <tab-item selected @on-item-click="getOrderList">全部</tab-item>
       <tab-item @on-item-click="getOrderList">待付款</tab-item>
       <tab-item @on-item-click="getOrderList">待发货</tab-item>
       <tab-item @on-item-click="getOrderList">待收货</tab-item>
       <tab-item @on-item-click="getOrderList">待评价</tab-item>
-
     </tab>
     <div v-for="(item,index) in list">
       <!--订单列表  -->
-      <div style="background-color: #fff; padding-left: 15px;" @click="itemDetail(index)">
+      <div style="background-color: #fff; padding-left: 15px;" >
+        <!--顶部-->
         <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
           <img src="../../assets/images/buyHome/icon-home-act.png" style="width: 15px;height: 15px;">
           <div style="margin: 0 3px 0 7px; color: #333333;font-size: 14px;">{{item.storeName}}</div>
@@ -18,7 +19,8 @@
           <div style="flex-grow:1;"></div>
           <div style="margin-right: 16px;color: #FD6D1F;font-size: 14px;">{{item.statusName}}</div>
         </div>
-        <div v-for="item2 in item.itemsList">
+        <!--商品-->
+        <div v-for="item2 in item.itemsList" @click="itemDetail(index)">
           <div class="vux-1px-t"  style="display: flex;flex-direction:row; padding-top: 15px;">
             <img :src="item2.productThumb" style="width: 90px;height: 80px;">
             <!--商品列表-->
@@ -42,7 +44,7 @@
 
           </div>
         </div>
-        <!--价格栏-->
+        <!--总价-->
         <div class="vux-1px-t"
              style="display: flex;flex-direction:row;margin-top: 20px;padding: 10px 0;justify-content:flex-end">
 
@@ -52,25 +54,27 @@
           <div v-show="item.freight > 0" style="margin-right:16px;font-size: 12px;">(含运费￥{{item.freight}})</div>
         </div>
         <!--底部按钮-->
+        <!--//1/2 待付款 无效订单，3 商家取消 4订单已取消 5 超时未付款，订单已关闭 6/7待发货 8/9/10/11 待收货 12/13 待评价 14/15 交易已完成-->
         <div class="vux-1px-t" style="display: flex;flex-direction:row;justify-content:flex-end;align-items: center;">
-          <button class="btn1" v-show="btnShow[0]" @click="btn1click(index)">取消订单</button>
-          <!--<button class="btn2" v-show="btnShow[1]" @click="btn2click">查看拼包凭证</button> &lt;!&ndash;86&ndash;&gt;-->
-          <button class="btn3" v-show="btnShow[2]" @click="btn3click(index)">付款</button>
-          <button class="btn4" v-show="btnShow[3]" @click="btn4click(index)">取消退款</button>
-          <button class="btn5" v-show="btnShow[4]" @click="btn5click(index)">删除订单</button>
-          <!--<button class="btn6" v-show="btnShow[5]" @click="btn6click">申请发票</button>-->
-          <!--<button class="btn7" v-show="btnShow[6]" @click="btn7click">查看物流</button>-->
-          <button class="btn8" v-show="btnShow[7]" @click="btn8click(index)">确认收货</button>
-          <!--<button class="btn9" v-show="btnShow[8]" @click="btn9click">去评价</button>-->
+          <button class="btn1" v-show="item.statusCode < 2 " @click="btn1click(index)" v-model="show">取消订单</button>
+          <!--<button class="btn2" v-show="item.statusCode > 5" @click="btn2click">查看拼包凭证</button> &lt;!&ndash;86&ndash;&gt;-->
+          <button class="btn3" v-show="item.statusCode < 2" @click="btn3click(index)">付款</button>
+          <!--<button class="btn4" v-show="item.statusCode ==1" @click="btn4click(index)">取消退款</button>-->
+          <button class="btn5" v-show="item.statusCode == 4" @click="btn5click(index)">删除订单</button>
+          <!--<button class="btn6" v-show="item.statusCode > 13" @click="btn6click">申请发票</button>-->
+          <!--<button class="btn7" v-show="item.statusCode > 7 && item.deliverStatus < 11" @click="btn7click">查看物流</button>-->
+          <button class="btn8" v-show="item.statusCode > 7 && item.deliverStatus < 11" @click="btn8click(index)">确认收货</button>
+          <!--<button class="btn9" v-show="item.statusCode ==12 || item.deliverStatus ==13" @click="btn9click">去评价</button>-->
         </div>
       </div>
     </div>
+    <actionsheet v-model="show" :menus="menus" @on-click-menu="click" show-cancel></actionsheet>
 
   </div>
 </template>
 
 <script>
-  import {Tab, TabItem, XButton} from 'vux'
+  import {Tab, TabItem, XButton,Actionsheet} from 'vux'
   import {getBuyerOrderList,
     getBuyerOrderPay,
     getBuyerOrderDelete,
@@ -84,18 +88,12 @@
     data() {
       return {
         list:[],
-        btnShow: [
-          false,
-          true,
-          false,
-          false,
-          false,
-          false,
-          false,
-          true,
-          false,
-          false,
-        ],
+        indexItem:0,
+        show: false,
+        menus: {
+          menu1: "我不想买了",
+          menu2: "信息填写错误，重新拍"
+        },
 
         orderListReq: {
           type: 0,
@@ -134,6 +132,7 @@
       Tab,
       TabItem,
       XButton,
+      Actionsheet
     },
     created() {
       this.getOrderList(0);
@@ -153,12 +152,27 @@
 
         });
       },
-      //取消订单
-      btn1click(index){
-        getBuyerOrderCancel().then((res) => {
+
+      //弹出框,打印
+      click(key)
+      {
+        console.log(key)
+        if (key=="menu2"){
+          this.orderCancelReq.reasonDesc = "七天无理由退换货"
+        }else {
+          this.orderCancelReq.reasonDesc = "信息填写错误"
+        }
+        this.orderCancelReq.orderId = this.list[this.indexItem].orderId;
+        getBuyerOrderCancel(this.orderCancelReq).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
+      },
+
+      //取消订单(OK)
+      btn1click(index){
+        this.show = true;
+        this.indexItem = index;
       },
       //付款
       btn3click(index){
@@ -169,20 +183,26 @@
       },
       //取消退款
       btn4click(index){
-        getBuyerOrderRefundCancel().then((res) => {
+        this.orderRefundCancel.orderId = this.list[index].orderId;
+        for (var i=0; i< this.list[index].itemsList.length;i++){
+          let itemsNo=  this.list[index].itemsList[i].itemsNo;
+          console.log("itemsNo::::::"+itemsNo);
+          this.orderRefundCancel.itemsNo.push(itemsNo)
+        }
+        getBuyerOrderRefundCancel(this.orderRefundCancel).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
       },
-      //删除订单
+      //删除订单(OK)
       btn5click(index){
         this.orderDelete.orderId = this.list[index].orderId;
-        getBuyerOrderDelete(orderDelete).then((res) => {
+        getBuyerOrderDelete(this.orderDelete).then((res) => {
           console.log(res);
           this.$vux.toast.text(res.msg);
         });
       },
-      //确认收货
+      //确认收货(OK)
       btn8click(index){
         console.log("test"+index);
         this.orderReceipt.orderId = this.list[index].orderId;
@@ -206,10 +226,7 @@
       },
     },
 
-    mounted()
-    {
 
-    },
     filters: {}
   }
 </script>
