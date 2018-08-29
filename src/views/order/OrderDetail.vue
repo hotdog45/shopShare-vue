@@ -132,8 +132,8 @@
        * @param orderid
        */
       showOrderDetail(){
-        this.Detail.orderId = this.$route.query.orderId;
-        getOrderDetail(this.Detail).then((res) => {
+        this.orderDetail.orderId = this.$route.query.orderId;
+        getOrderDetail(this.orderDetail).then((res) => {
           console.log(res);
         });
       },
