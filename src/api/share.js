@@ -36,7 +36,7 @@ export function getOrderDetail(params) {
 
 // 买家订单付款
 export function getBuyerOrderPay(params) {
-  return request.post('order/BuyerOrderPay', params);
+  return request.post('order/BuyerOrderDetail', params);
 }
 
 //  永久性删除订单
