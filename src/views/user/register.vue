@@ -106,7 +106,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="less" rel="stylesheet/less">
   .x-input {
     height: 65px;
     font-size: 15px;

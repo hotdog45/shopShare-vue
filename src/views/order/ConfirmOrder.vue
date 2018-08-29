@@ -97,7 +97,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="less" rel="stylesheet/less">
   @white: #FFFFFF;
   @black:#393a3e;
 

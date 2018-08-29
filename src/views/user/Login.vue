@@ -89,7 +89,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="less" rel="stylesheet/less">
 
   .input-box {
     background-color: #FFFFFF;

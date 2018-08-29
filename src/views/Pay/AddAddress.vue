@@ -56,7 +56,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="less" rel="stylesheet/less">
 
   /*.is-default{*/
     /*margin-left: 10px;*/
