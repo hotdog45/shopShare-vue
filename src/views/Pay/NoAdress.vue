@@ -3,7 +3,7 @@
     <div class="noaddress" style="height:100%;margin: auto;text-align: center;padding: 300px 118px" @click.native="handleAddAddress">
     暂时还没添加地址
     </div>
-    <x-button  type="primary" style="border-radius:1px;background-color:#FD6D1F;
+    <x-button  type="primary" style="border-radius:1px;background-color:#FD6D1F;position: fixed;bottom: 0;
     color:#fff;" @click.native="handleAddAddress">+添加收货地址</x-button>
   </div>
 </template>

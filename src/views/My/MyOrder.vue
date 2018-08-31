@@ -72,7 +72,6 @@
       </div>
     </div>
     <actionsheet v-model="show" :menus="menus" @on-click-menu="click" show-cancel></actionsheet>
-
   </div>
 </template>
 
@@ -86,7 +85,7 @@
     getBuyerOrderRefundCancel,
     getBuyerOrderCancel,
   } from '@/api/share';
-  //
+
   export default {
     name: 'myOrders',
     data() {
@@ -139,10 +138,11 @@
       TabItem,
       XButton,
       Actionsheet,
-      CheckIcon
+      CheckIcon,
+      Tabbar,
     },
     created() {
-      this.getOrderList(0);
+      this.getOrderList(0)
     },
     methods: {
       //获取列表
@@ -234,7 +234,7 @@
     },
 
 
-    filters: {}
+    filters: {},
   }
 </script>
 

@@ -189,6 +189,9 @@ export default {
     },
     //立即购买
     goShopping(){
+//      this.$router.push({
+//        path:'/addresslist'
+//      })
 
     },
     //加购物车 { "productId":"商品ID",//必选 商品ID "skuSize": [{//商品尺寸 SKU "sizeSno": "1",//必选 尺寸Sku sno

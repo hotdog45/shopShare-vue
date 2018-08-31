@@ -69,13 +69,13 @@
             </div>
           </flexbox-item>
           <flexbox-item class="order-type-box">
-            <div class="type-item" @click="toWaitPay">
+            <div class="type-item" @click="toWaitGet">
               <img src="../../assets/images/share/mywindmill_goodsreceipt.png"/>
               <span>待收货</span>
             </div>
           </flexbox-item>
           <flexbox-item class="order-type-box">
-            <div class="type-item" @click="toWaitPay">
+            <div class="type-item" @click="toWaitAsk">
               <img src="../../assets/images/share/mywindmill_pendingevaluation.png"/>
               <span>待评价</span>
             </div>
@@ -107,54 +107,71 @@
     <group gutter="15px">
       <cell class="mylist" title="设置" is-link></cell>
     </group>
+
+
+    <!--<tab></tab>-->
   </div>
 </template>
 
 <script>
-  import { Group, Cell, CellBox, Flexbox, FlexboxItem } from 'vux'
+  import { Group, Cell, CellBox, Flexbox, FlexboxItem,Tabbar, TabbarItem,  } from 'vux'
+  import {getBuyerOrderList} from '@/api/share';
   export default {
-    name: 'my',
+    name: 'My',
     data() {
       return {
         name: '艾艾艾小北的店',
+        orderListReq: {
+          type: Number,
+          pageIndex: 0,
+          pageSize: 50,
+        },
       }
     },
-    methods:{
-      toWaitPay(){
-        this.$router.push({
-          path:'/MyOrders',
-          query:{
-            selected:'waitPay'
-          }
-        })
-      },
-      toWaitDeliver(){
-        this.$router.push({
-          path:'/MyOrders',
-          query:{
-            selected:'waitDeliver'
-          }
-        })
-      },
-      toWaitGet(){
-        this.$router.push({
-          path:'/MyOrders',
-          query:{
-            selected:'waitGet'
-          }
-        })
-      },
-      toWaitAccess(){
-        this.$router.push({
-          path:'/MyOrders',
-          query:{
-            selected:'waitAccess'
-          }
-        })
-      },
-      refunding(){
+    created(){
 
-      }
+    },
+    methods:{
+//      toWaitPay(index){
+//        this.$router.push({
+//          path:'/myorder',
+//          query:{
+////            selected:'waitDeliver'
+//          }
+//        })
+//      },
+//      toWaitDeliver(){
+//        this.$router.push({
+//          path:'/myorder',
+//          query:{
+////            selected:'waitDeliver'
+//          }
+//        })
+//      },
+//      toWaitGet(){
+//        this.$router.push({
+//          path:'/myorder',
+//          query:{
+////            selected:'waitGet'
+//          }
+//        })
+//      },
+//      toWaitAsk(){
+//        this.$router.push({
+//          path:'/myorder',
+//          query:{
+////            selected:'waitAccess'
+//          }
+//        })
+//      },
+//      refunding(){
+//        this.$router.push({
+//          path:'/myorder',
+//          query:{
+////            selected:'waitAccess'
+//          }
+//        })
+//      }
     },
     components: {
       Group,
@@ -162,11 +179,18 @@
       CellBox,
       Flexbox,
       FlexboxItem,
+      Tabbar,
+      TabbarItem,
+//      Tab
     }
   }
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+   html,body
+  .tab-wrapper{
+    height: 100%;
+  }
   .user-info {
     padding-top: 45px;
     width: 100%;
@@ -222,5 +246,20 @@
     font-size: 16px;
     color: #333;
 
+  }
+  .tab-wrapper{
+    position: fixed !important;
+    bottom: 0;
+  }
+  .tab{
+    height: 49px;
+    background-color: #fff;
+    >img{
+      width: 18px;
+      height: 18px;
+    }
+    >span{
+      font-size: 11px;
+    }
   }
 </style>

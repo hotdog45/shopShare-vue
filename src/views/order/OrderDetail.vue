@@ -35,7 +35,7 @@
     <div style="background-color: #fff">
       <div style="display: flex; flex-direction: row; height: 43px; align-items: center">
         <div style="height: 43px;font-size: 14px;padding: 15px">{{orderData.storeName}}</div>
-        <img src="../../assets/images/share/blackcome.png" style="width: 7px;height: 10px;">
+        <img src="../../assets/images/share/come.png" style="width: 8px;height: 10px;margin-top: 8px">
       </div>
       <cell-box v-for="item in orderData.itemsList" key="item.id">
         <div class="goods-item">
@@ -70,7 +70,7 @@
          style="display: flex; flex-direction: row;align-items: center;margin: 15px 0;background: #fff;height:43px;font-size: 14px">
       <span style="padding: 0 17px;color:#888">联系卖家:</span>
       <span style="flex-grow:1;">{{orderData.storeName}}</span>
-      <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px;margin-right: 15px">
+      <img src="../../assets/images/share/come.png" style="width: 8px;height: 10px;margin-right: 12px">
     </div>
 
     <div class="order-msg">
@@ -124,8 +124,8 @@
           menu2: "信息填写错误"
         },
         orderDetail: {
-          orderId: "",//必选 订单号
-        },
+          orderId: ""  //必选 订单号
+        }
       }
     },
     created() {
