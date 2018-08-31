@@ -56,11 +56,29 @@ export function getBuyerOrderCancel(params) {
   return request.post('order/BuyerOrderCancel', params);
 }
 
-
-
 // 登录
 export function getLogin(params) {
   return request.post('user/UserLogin', params);
 }
+// 地址列表
+export function getAddressList(params) {
+  return request.post('user/AddressList', params);
+}
+// 增加地址
+export function getAddAddress(params) {
+  return request.post('user/AddressAdd', params);
+}
 
+//更新地址
+export function getAddressMod(params) {
+  return request.post('user/AddressMod', params);
+}
 
+//更新地址
+export function getAddressDel(params) {
+  return request.post('user/AddressDel', params);
+}
+//添加订单
+export function getBuyerOrderAdd(params) {
+  return request.post('user/BuyerOrderAdd', params);
+}

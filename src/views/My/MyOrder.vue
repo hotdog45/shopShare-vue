@@ -69,7 +69,6 @@
       </div>
     </div>
     <actionsheet v-model="show" :menus="menus" @on-click-menu="click" show-cancel></actionsheet>
-
   </div>
 </template>
 
@@ -82,7 +81,7 @@
     getBuyerOrderRefundCancel,
     getBuyerOrderCancel,
   } from '@/api/share';
-  //
+
   export default {
     name: 'myOrders',
     data() {
@@ -132,7 +131,8 @@
       Tab,
       TabItem,
       XButton,
-      Actionsheet
+      Actionsheet,
+//      Tabbar
     },
     created() {
       this.getOrderList(0);

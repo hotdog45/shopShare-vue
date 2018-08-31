@@ -11,7 +11,7 @@
     <div style="background-color: #fff">
       <div style="display: flex; flex-direction: row; height: 43px; align-items: center">
         <div style="height: 43px;font-size: 14px;padding: 15px">萝莉童装</div>
-        <img src="../../assets/images/share/blackcome.png" style="width: 15px;height: 15px;">
+        <img src="../../assets/images/share/come.png" style="width: 8px;height: 10px;margin-top: 8px">
       </div>
       <cell-box v-for="item in goodsList" key="item.id">
         <div class="goods-item">
@@ -28,7 +28,7 @@
     </div>
 
     <div style="margin-bottom: 50px;margin-top: 15px;background-color: #fff" >
-      <x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0" width="34px" @on-change="change"></x-number>
+      <x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0" fillable=true width="34px" @on-change="change"></x-number>
       <cell style="height: 49px;font-size: 14px" title="优惠券" value="满200减200" is-link v-show="!storeInfo.show"></cell>
       <cell style="height: 49px;font-size: 14px" title="配送方送" value="快递 免邮" is-link ></cell>
       <cell style="height: 49px;font-size: 14px" title="备注"></cell>
@@ -38,7 +38,7 @@
         </div>
       </cell>
     </div >
-    <x-button style="background: #FD6D1F" type="primary" class="sub-btn" @click.native="handleAddAddress">提交订单</x-button>
+    <x-button style="background: #FD6D1F;position: fixed;bottom: 0" type="primary" class="sub-btn" @click.native="submitOrder">提交订单</x-button>
 
     <!--<div>-->
       <!--<x-button  type="primary" style="border-radius:1px;background-color:#FD6D1F;font-size: 15px;-->
@@ -50,6 +50,8 @@
 <script>
   import { Group, Cell, CellBox, Datetime, CheckIcon,XNumber,XButton } from 'vux'
 //  import CalcNumber from '../../components/CalcNumber.vue'
+  import {getAddressList} from '@/api/share';
+
   export default {
     name: 'orderDetails',
     data() {
@@ -79,7 +81,18 @@
         }]
       }
     },
+    created(){
+      this.confirmOder()
+    },
     methods:{
+      //提交订单详情
+      confirmOder(){
+
+
+      },
+
+
+
       change (value) {
         console.log('change', value)
       },
@@ -88,7 +101,7 @@
       },
       toChooseAddress(){
         this.$router.push({
-          path:'/NoAdress'
+          path:'/addresslist'
         })
       },
       submitOrder(){
@@ -225,10 +238,10 @@
   }
   }
   }
-  .sub-btn{
+  .add-btn{
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 0px;
+    left: 0px;
     font-size: 14px;
     height: 50px;
   }

@@ -1,53 +1,96 @@
 <template>
   <div class="receiptAddress">
-    <div class="addres-item" v-for="item in addressList" @click="handleSelect" style="margin: 15px">
-      <p>{{item.name}}&nbsp;&nbsp;{{item.mobile}}</p>
-      <p style="font-size: 13px">{{item.address}}</p>
-      <div>
-        <check-icon :value.sync="item.isDefault" @click.native.stop="handleCheckedItem(item)">默认地址</check-icon>
-        <router-link @click.native.stop to="/addadress">编辑</router-link>
-        <router-link @click.native.stop to="/AddAddress">删除</router-link>
+    <div class="addres-item" v-for="(item ,index) in addressList" style="margin: 15px">
+      <p>{{item.consignee}}&nbsp;&nbsp;{{item.mobile}}</p>
+      <p style="font-size: 13px">{{item.provinceName + item.cityName + item.districtName + item.addressName}}</p>
+      <div class="btn_del" style="display: flex;flex-direction: row; ">
+        <check-icon :value.sync="addressList.isDefault" @click.native="handleCheckedItem(index)">默认地址</check-icon>
+        <div style="flex-grow: 2;"></div>
+        <button @click="addressEdit(item)">编辑</button>
+        <button @click="goDelAddress(index)" >删除</button>
 
       </div>
     </div>
+    <x-button style="background: #FD6D1F" type="primary" class="add-btn" @click.native="handleAddAddress">添加地址</x-button>
   </div>
 </template>
 
 <script>
   import { CheckIcon, XButton } from 'vux'
+  import {getAddressList} from '@/api/share'
+  import {getAddressDel,getAddressMod} from '@/api/share'
   export default {
     name: 'receiptAddress',
     data() {
       return {
         checked:true,
-        addressList:[{
-          name:'张三',
-          mobile:'18366667777',
-          address:'上海上海市浦东新区超神一条街111号',
-          isDefault:true
-        },{
-          name:'李四',
-          mobile:'18366667777',
-          address:'上海上海市浦东新区超神一条街111号',
-          isDefault:false
-        }]
+        addressList: [],
+
+        addressDel:{
+          addressId:""  //订单id
+        }
       }
     },
+
+    created() {
+      this.addressNewList();
+    },
     methods:{
-      handleCheckedItem(item){
-        this.addressList.forEach((item) => {
-          item.isDefault = false;
+  //获取地址列表
+      addressNewList(item){
+        getAddressList(this.addressList).then((res)=>{
+          console.log(res);
+          if(res.status != 0){
+            this.$vux.toast.text(res.msg);
+          }else{
+            this.addressList = res.data
+          }
+
         })
-        item.isDefault = true;
+        },
+      handleCheckedItem(item){ //设置默认
+//        this.addressList.forEach((item) => {
+//          item.isDefault = 1;
+//        })
+//        item.isDefault = 0;
+        console.log('item.isDefault'+this.addressList[index].isDefault);
+        this.addressList[index].isDefault = this.addressList[index].isDefault==0?1:0; //三目运算符
+//        console.log('item:'+item);
+        console.log('item.isDefault2:'+this.addressList[index].isDefault);
+        getAddressMod(this.addressList[index]).then((res)=>{
+          console.log(res);
+          this.$vux.toast.text(res.msg);
+          if(res.status == 0){ //成功之后重新请求,刷新数据
+//            this.addressNewList();
+          }
+        })
+      },
+
+      //删除地址
+      goDelAddress(index){
+        console.log("index:"+index);
+        this.addressDel.addressId = this.addressList[index].addressId;
+        console.log("addressId:"+this.addressList[index])
+        getAddressDel(this.addressDel).then((res)=>{
+          console.log(res);
+          this.$vux.toast.text(res.msg);
+          if(res.status == 0){ //成功之后重新请求,刷新数据
+            this.addressNewList();
+          }
+
+        })
+      },
+      addressEdit(item) {
+          this.$router.push({
+            path:'addadress',
+            query:{
+              addressData:item
+            }
+          })
       },
       handleAddAddress(){
         this.$router.push({
-          path:'/AddAddress'
-        })
-      },
-      handleSelect(){
-        this.$router.push({
-          path:'/PerfectOrder'
+          path:'addadress'
         })
       }
     },

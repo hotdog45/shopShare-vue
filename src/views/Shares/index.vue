@@ -167,6 +167,9 @@ export default {
     },
     //立即购买
     goShopping(){
+//      this.$router.push({
+//        path:'/addresslist'
+//      })
 
     },
     //加购物车
