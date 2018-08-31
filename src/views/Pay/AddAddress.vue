@@ -7,7 +7,7 @@
     <group>
       <x-address title="所在地区" v-model="value" raw-value :list="addressDatas" value-text-align="left"
                  label-width="100px"></x-address>
-      <x-textarea title="详细地址" v-model="addressData.addressName" placeholder="请填写详细信息" :show-counter="false" :rows="3"
+      <x-textarea title="详细地址" v-model="addressData.address" placeholder="请填写详细信息" :show-counter="false" :rows="3"
                   label-width="100px"></x-textarea>
     </group>
     <!--<check-icon style="font-size: 16px;"class="is-default" :value.sync="isDefault" @click.native="handleCheckedItem">默认地址</check-icon>-->
@@ -46,6 +46,7 @@
           province: '',//省  代码不是 名字
           city: '',//市 代码不是 名字 330100
           district: '',//区 代码不是 名字
+          address:"",
           addressId: '',//id 新增不用传
           email: '',
           country: 1,
@@ -54,18 +55,23 @@
           addressName: '',//详细地址
           signBuilding: '',//
           bestTime: '',//上班时间
-          isDefault: 0,//是否默认
+          isDefault: 1,//是否默认
         }
 
       }
     },
     created(){
-//      this.addressData = this.$route.query.addressData
+      if (this.$route.query.addressData){
+        this.addressData = this.$route.query.addressData
+        this.value[0] = this.$route.query.addressData.province;
+        this.value[1] = this.$route.query.addressData.city;
+        this.value[2] = this.$route.query.addressData.district;
+        console.log(this.addressData)
+      }
+
     },
     methods: {
       handleAddAddress(){
-
-//        this.address = this.getName(this.value).split(" ");
         this.addressData.province = this.value[0]
         this.addressData.city = this.value[1]
         this.addressData.district = this.value[2]
