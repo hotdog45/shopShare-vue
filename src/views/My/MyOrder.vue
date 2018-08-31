@@ -66,6 +66,9 @@
           <button class="btn8" v-show="item.statusCode > 7 && item.deliverStatus < 11" @click="btn8click(index)">确认收货</button>
           <!--<button class="btn9" v-show="item.statusCode ==12 || item.deliverStatus ==13" @click="btn9click">去评价</button>-->
         </div>
+        <!--<check-icon :value.sync="demo1" type="plain">  demo2 </check-icon>-->
+        <!--<check-icon :value.sync="demo2" type="plain">  demo2 </check-icon>-->
+
       </div>
     </div>
     <actionsheet v-model="show" :menus="menus" @on-click-menu="click" show-cancel></actionsheet>
@@ -75,6 +78,7 @@
 
 <script>
   import {Tab, TabItem, XButton,Actionsheet} from 'vux'
+  import { CheckIcon } from 'vux'
   import {getBuyerOrderList,
     getBuyerOrderPay,
     getBuyerOrderDelete,
@@ -87,6 +91,8 @@
     name: 'myOrders',
     data() {
       return {
+        demo1:'0',
+        demo2:"1",
         list:[],
         indexItem:0,
         show: false,
@@ -132,7 +138,8 @@
       Tab,
       TabItem,
       XButton,
-      Actionsheet
+      Actionsheet,
+      CheckIcon
     },
     created() {
       this.getOrderList(0);

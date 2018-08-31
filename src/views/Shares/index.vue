@@ -1,5 +1,5 @@
 <template>
-  <div class="share" style="height:100%;" v-if="true" >
+  <div class="share" style="height:100%;" v-if="datas" >
     <div class="share-detail">
       <div class="share-head">
         <img slot="icon" :src="datas.productThembUrl">
@@ -112,7 +112,7 @@ import { Tabbar, TabbarItem, Flexbox, FlexboxItem, Group,Cell, CellBox, Divider,
 import { getShareList } from '@/api/share';
 import Parameter from './components/Parameter';
 import TabItem from './components/TabItem';
-
+import {getAddFollowProduct,getCartAdd} from '@/api/share';
 
 export default {
   components: {
@@ -142,6 +142,24 @@ export default {
       coupon: null,
       buy: false,
       parShow: false,
+
+      addCarData :{
+        productId:"",
+        skuSize:[{
+          sizeSno: "",
+          isSel: 0,
+        },],
+        skuColor:[{
+          colorSno: "",
+          num: 0,
+          hnum: 0,
+          price: 0,
+        },],
+        parentId:"",
+        enrollId:"",
+        isGift:0,
+      }
+
     };
   },
   created() {
@@ -150,6 +168,7 @@ export default {
   methods: {
     getInfo() {
       getShareList(this.product).then((res) => {
+        console.log(res);
         this.datas = res.data;
       });
     },
@@ -159,7 +178,10 @@ export default {
     },
     //收藏或取消收藏
     collectionShop(){
-
+      getAddFollowProduct(this.product).then((res) => {
+        console.log(res);
+        this.$vux.toast.test(res.msg)
+      });
     },
     //去购物车
     goShoppingCar(){
@@ -169,9 +191,18 @@ export default {
     goShopping(){
 
     },
-    //加购物车
+    //加购物车 { "productId":"商品ID",//必选 商品ID "skuSize": [{//商品尺寸 SKU "sizeSno": "1",//必选 尺寸Sku sno
+    // "isSel": "1"//必选 默认1 }, { "sizeSno": "2",//必选 尺寸Sku sno "isSel": "0"//必选 默认1
+    // 尺寸Sku sno 如为0 该整个对象可以不传 }], "skuColor": [{ "colorSno": "1", //必选 颜色Sku sno
+    // "num": "100",//必选 加入购物车件数量。 "hnum": "20",//必选 加入购物车手数量。 "price": "3.5"//可选 加入购物车数量 },
+    // { "colorSno": "2", //必选 颜色Sku sno "num": "100",//必选 加入购物车件数量。 "hnum": "20",//必选 加入购物车手数量。
+    // "price": "3.5"//可选 加入购物车数量 }], "parentId":"",//可选 默认空 主产品ID "enrollId":"0",//必选 默认0 活动类型
+    // "isGift":"0"//可选 默认0 是否赠品 }
     addShoppingCar(){
-
+      getCartAdd(this.addCarData).then((res) => {
+        console.log(res);
+        this.$vux.toast.test(res.msg)
+      });
     },
   },
 };

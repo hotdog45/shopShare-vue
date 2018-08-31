@@ -39,7 +39,7 @@ export function getBuyerOrderPay(params) {
   return request.post('order/BuyerOrderDetail', params);
 }
 
-//  永久性删除订单
+//  删除订单
 export function getBuyerOrderDelete(params) {
   return request.post('order/BuyerOrderDel', params);
 }
@@ -55,6 +55,22 @@ export function getBuyerOrderRefundCancel(params) {
 export function getBuyerOrderCancel(params) {
   return request.post('order/BuyerOrderCancel', params);
 }
+
+// 添加收藏商品
+export function getAddFollowProduct(params) {
+  return request.post('follow/AddFollowProduct', params);
+}
+
+//取消收藏商品
+export function getDelFollowProduct(params) {
+  return request.post('follow/DelFollowProduct', params);
+}
+
+//添加购物车
+export function getCartAdd(params) {
+  return request.post('cart/CartAdd', params);
+}
+
 
 
 
