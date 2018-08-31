@@ -4,7 +4,7 @@
       <p>{{item.consignee}}&nbsp;&nbsp;{{item.mobile}}</p>
       <p style="font-size: 13px">{{item.provinceName + item.cityName + item.districtName + item.addressName}}</p>
       <div class="btn_del" style="display: flex;flex-direction: row; ">
-        <check-icon :value.sync="addressList.isDefault" @click.native="handleCheckedItem(index)">默认地址</check-icon>
+        <check-icon :value.sync="item.isDefault == 1" @click.native="handleCheckedItem(index)">默认地址</check-icon>
         <div style="flex-grow: 2;"></div>
         <button @click="addressEdit(item)">编辑</button>
         <button @click="goDelAddress(index)" >删除</button>
@@ -17,8 +17,10 @@
 
 <script>
   import { CheckIcon, XButton } from 'vux'
-  import {getAddressList} from '@/api/share'
-  import {getAddressDel,getAddressMod} from '@/api/share'
+  import {getAddressList,getAddressDel,
+    getAddressMod,
+    getAddressDefault
+  } from '@/api/share'
   export default {
     name: 'receiptAddress',
     data() {
@@ -28,6 +30,11 @@
 
         addressDel:{
           addressId:""  //订单id
+        },
+        //设置默认
+        addressDefault:{
+          addressId:"",  //订单id
+          isDefault:1
         }
       }
     },
@@ -44,24 +51,22 @@
             this.$vux.toast.text(res.msg);
           }else{
             this.addressList = res.data
+
           }
+
 
         })
         },
-      handleCheckedItem(item){ //设置默认
-//        this.addressList.forEach((item) => {
-//          item.isDefault = 1;
-//        })
-//        item.isDefault = 0;
-        console.log('item.isDefault'+this.addressList[index].isDefault);
-        this.addressList[index].isDefault = this.addressList[index].isDefault==0?1:0; //三目运算符
-//        console.log('item:'+item);
-        console.log('item.isDefault2:'+this.addressList[index].isDefault);
-        getAddressMod(this.addressList[index]).then((res)=>{
+      handleCheckedItem(index){ //设置默认
+        console.log('isDefault修改之前:'+this.addressList[index].isDefault);
+        this.addressDefault.isDefault = this.addressList[index].isDefault==0?1:0; //三目运算符
+        this.addressDefault.addressId = this.addressList[index].addressId
+        console.log('this.addressDefault:'+this.addressDefault);
+        getAddressDefault(this.addressDefault).then((res)=>{
           console.log(res);
           this.$vux.toast.text(res.msg);
           if(res.status == 0){ //成功之后重新请求,刷新数据
-//            this.addressNewList();
+            this.addressNewList();
           }
         })
       },

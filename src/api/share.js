@@ -98,3 +98,8 @@ export function getAddressDel(params) {
 export function getBuyerOrderAdd(params) {
   return request.post('user/BuyerOrderAdd', params);
 }
+
+//收货人更新默认地址
+export function getAddressDefault(params) {
+  return request.post('user/AddressDefault', params);
+}
