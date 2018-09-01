@@ -17,9 +17,10 @@
 
 <script>
   import { CheckIcon, XButton } from 'vux'
-  import {getAddressList,getAddressDel,
-    getAddressMod,
-    getAddressDefault
+  import {getAddressList,
+          getAddressDel,
+          getAddressMod,
+          getAddressDefault
   } from '@/api/share'
   export default {
     name: 'receiptAddress',
@@ -27,7 +28,6 @@
       return {
         checked:true,
         addressList: [],
-
         addressDel:{
           addressId:""  //订单id
         },
@@ -43,7 +43,7 @@
       this.addressNewList();
     },
     methods:{
-  //获取地址列表
+      //获取地址列表
       addressNewList(item){
         getAddressList(this.addressList).then((res)=>{
           console.log(res);
@@ -51,13 +51,11 @@
             this.$vux.toast.text(res.msg);
           }else{
             this.addressList = res.data
-
           }
-
-
         })
         },
-      handleCheckedItem(index){ //设置默认
+      //设置默认地址
+      handleCheckedItem(index){
         console.log('isDefault修改之前:'+this.addressList[index].isDefault);
         this.addressDefault.isDefault = this.addressList[index].isDefault==0?1:0; //三目运算符
         this.addressDefault.addressId = this.addressList[index].addressId
@@ -65,7 +63,7 @@
         getAddressDefault(this.addressDefault).then((res)=>{
           console.log(res);
           this.$vux.toast.text(res.msg);
-          if(res.status == 0){ //成功之后重新请求,刷新数据
+          if(res.status == 0){      //成功之后重新请求,刷新数据
             this.addressNewList();
           }
         })
@@ -85,6 +83,7 @@
 
         })
       },
+      //编辑地址
       addressEdit(item) {
           this.$router.push({
             path:'addadress',
@@ -133,13 +132,6 @@
     font-size: 13px;
      height: 30px;
      line-height: 30px;
-  a{
-    float: right;
-    display: inline-block;
-    width: 60px;
-    height: 100%;
-    text-align: center;
-  }
   }
   }
   .add-btn{

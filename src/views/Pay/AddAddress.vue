@@ -66,11 +66,11 @@
         this.value[0] = this.$route.query.addressData.province;
         this.value[1] = this.$route.query.addressData.city;
         this.value[2] = this.$route.query.addressData.district;
-        console.log(this.addressData)
+        console.log(this.$route.query.addressData)
       }
-
     },
     methods: {
+      //确认添加地址
       handleAddAddress(){
         this.addressData.province = this.value[0]
         this.addressData.city = this.value[1]
@@ -80,7 +80,6 @@
         getAddAddress(this.addressData).then((res)=> {
           this.$vux.toast.text(res.msg);
           console.log(res)
-          this.$vux.toast.text(res.msg);
           if (res.status == 0) {
             this.$router.push({
               path: 'addresslist',

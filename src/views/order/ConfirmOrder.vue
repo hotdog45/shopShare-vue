@@ -19,7 +19,7 @@
             <img/>
           </div>
           <div class="goods-info">
-            <p>{{item.name}}</p>
+            <p style="margin-top:0px">{{item.name}}</p>
             <div style="font-size: 12px">￥{{item.price}}<span>x{{item.count}}</span></div>
           </div>
         </div>

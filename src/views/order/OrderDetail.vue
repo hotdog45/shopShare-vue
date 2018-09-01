@@ -25,7 +25,7 @@
           <p style="height: 0;padding-left: 38px;font-size: 15px">收货人:{{orderData.consignee}}&nbsp;&nbsp;&nbsp;{{orderData.mobile}}</p>
           <div style="display: flex; flex-direction: row;">
             <img src="../../assets/images/share/address_icon.png"
-                 style="width: 20px;height: 20px;margin-left: 15px;margin-top:20px">
+                 style="width: 20px;height: 20px;margin-left: 15px;margin-top:7px">
             <p style="margin-left: 3px;font-size: 14px;">收货地址:{{orderData.address}}</p>
           </div>
         </div>
@@ -43,7 +43,7 @@
             <img :src="item.productThumb" style="width: 90px;height: 80px;">
           </div>
           <div class="goods-info">
-            <p>{{item.productName}}</p>
+            <p style="margin-top: 0">{{item.productName}}</p>
             <div style="font-size: 12px">￥{{item.realAmnt}}<span>x{{item.num}}</span></div>
           </div>
         </div>

@@ -9,12 +9,11 @@ export const constantRouterMap = [{
   path: '/',
   name: 'Tab',
   component: asyncImport('My/Tab') ,
-  redirect:'/my',//从定向到首页
+  redirect:'/my',//重定向到首页
   children: [
     { path: '', component: asyncImport('Home') },
-    { path: '/myorder',component: asyncImport('My/MyOrder') },
     { path: '/my', component: asyncImport('My/My') },
-    { path: '/my', component: asyncImport('My/My') },
+    { path: '/shopcar', component: asyncImport('ShopCar/shopcar') },
     { path: '/my', component: asyncImport('My/My') },
   ]},
   { path: '/shares', component: asyncImport('Shares') },
@@ -30,6 +29,8 @@ export const constantRouterMap = [{
   { path: '/orderdetail', component: asyncImport('order/OrderDetail') },
   { path: '/register', component: asyncImport('user/register') },
   { path: '/myorder', component: asyncImport('My/MyOrder') },
+  { path: '/intro', component: asyncImport('Store/Intro') },
+  { path: '/storehome', component: asyncImport('Store/Home') },
 
 ];
 export default new Router({

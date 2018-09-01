@@ -1,7 +1,7 @@
 <template>
   <div class="myOrders">
     <!--//顶部-->
-    <tab :line-width=2 custom-bar-width="75px" active-color="#FD6D1F" default-color="#333333" scroll-threshold = 5 >
+    <tab :line-width=2 custom-bar-width="75px" active-color="#FD6D1F" default-color="#333333" scroll-threshold = 5>
       <tab-item selected @on-item-click="getOrderList">全部</tab-item>
       <tab-item @on-item-click="getOrderList">待付款</tab-item>
       <tab-item @on-item-click="getOrderList">待发货</tab-item>
@@ -12,7 +12,7 @@
       <!--订单列表  -->
       <div style="background-color: #fff; padding-left: 15px;" >
         <!--顶部-->
-        <div style="display: flex; flex-direction: row; margin-top: 20px; height: 43px; align-items: center">
+        <div style="display: flex; flex-direction: row; margin-top: 15px; height: 43px; align-items: center">
           <img src="../../assets/images/buyHome/icon-home-act.png" style="width: 15px;height: 15px;">
           <div style="margin: 0 3px 0 7px; color: #333333;font-size: 14px;">{{item.storeName}}</div>
           <img src="../../assets/images/share/come.png" style="width: 8px;height: 10px">
@@ -139,7 +139,6 @@
       XButton,
       Actionsheet,
       CheckIcon,
-      Tabbar,
     },
     created() {
       this.getOrderList(0)
@@ -205,7 +204,10 @@
       btn5click(index){
         this.orderDelete.orderId = this.list[index].orderId;
         getBuyerOrderDelete(this.orderDelete).then((res) => {
-          console.log(res);
+          if(res.status == 0){      //成功之后重新请求,刷新数据
+            this.getOrderList();
+            console.log(res);
+          }
           this.$vux.toast.text(res.msg);
         });
       },

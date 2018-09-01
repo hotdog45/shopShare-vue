@@ -4,9 +4,7 @@ import Vue from 'vue';
 import { TransferDom } from 'vux';
 import FastClick from 'fastclick';
 // import VConsole from 'vconsole';
-
 import './styles/index.scss';
-
 import App from './App';
 import router from './router';
 
@@ -22,7 +20,6 @@ import './permission'; // permission control
 import  { ToastPlugin, LoadingPlugin } from 'vux'
 
 Vue.use(ToastPlugin)
-
 Vue.config.productionTip = false;
 
 Vue.directive('transfer-dom', TransferDom);
