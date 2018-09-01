@@ -19,9 +19,11 @@ import Icon from './components/Icon';
 
 import './utils/bridge';
 import './permission'; // permission control
-import  { ToastPlugin, LoadingPlugin } from 'vux'
+import { Stepper } from 'vant';
+import { Popup } from 'vant';
 
-Vue.use(ToastPlugin)
+Vue.use(Popup);
+Vue.use(Stepper);
 
 Vue.config.productionTip = false;
 
