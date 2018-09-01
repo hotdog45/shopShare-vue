@@ -4,7 +4,9 @@ import Vue from 'vue';
 import { TransferDom } from 'vux';
 import FastClick from 'fastclick';
 // import VConsole from 'vconsole';
+
 import './styles/index.scss';
+
 import App from './App';
 import router from './router';
 
@@ -17,9 +19,12 @@ import Icon from './components/Icon';
 
 import './utils/bridge';
 import './permission'; // permission control
-import  { ToastPlugin, LoadingPlugin } from 'vux'
+import { Stepper } from 'vant';
+import { Popup } from 'vant';
 
-Vue.use(ToastPlugin)
+Vue.use(Popup);
+Vue.use(Stepper);
+
 Vue.config.productionTip = false;
 
 Vue.directive('transfer-dom', TransferDom);
@@ -38,8 +43,8 @@ Object.keys(filters).forEach((key) => {
 // const DEBUG = false;
 // false 绿色的按钮消失
 /* if (DEBUG) {
-  const vconsole = new VConsole();
-} */
+ const vconsole = new VConsole();
+ } */
 
 FastClick.attach(document.body);
 

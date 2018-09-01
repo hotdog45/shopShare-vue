@@ -83,7 +83,7 @@
         </div>
       </div>
     </div>
-    <div class="share-footer" >
+    <div class="share-footer" v-if="!skuShow">
 
       <div class="btnStyle">
         <img src="@/assets/images/share/comment.png">
@@ -104,6 +104,16 @@
      <popup v-model="parShow"  @click.native ="parShow = false">
        <parameter :datas = "datas" ></parameter>
      </popup>
+
+    <div v-transfer-dom>
+      <!--<popup v-model="skuShow"  >-->
+        <!--<skuList  :datas = "datas" :showBtn1="true":showBtn2="true"></skuList>-->
+      <!--</popup>-->
+      <van-popup v-model="skuShow" position="bottom">
+        <skuList  :datas = "datas" :showBtn1="true":showBtn2="true"></skuList>
+
+      </van-popup>
+    </div>
   </div>
 </template>
 
@@ -111,6 +121,7 @@
 import { Tabbar, TabbarItem, Flexbox, FlexboxItem, Group,Cell, CellBox, Divider, XTable, Popup } from 'vux';
 import { getShareList } from '@/api/share';
 import Parameter from './components/Parameter';
+import SkuList from './components/SkuList';
 import TabItem from './components/TabItem';
 import {getAddFollowProduct,getCartAdd} from '@/api/share';
 
@@ -129,6 +140,7 @@ export default {
     Parameter,
     TabItem,
     CellBox,
+    SkuList,
   },
   //productId: '66ca3b6fd2e244a9962bb91f66a7c968',
   data() {
@@ -142,6 +154,7 @@ export default {
       coupon: null,
       buy: false,
       parShow: false,
+      skuShow: true,
 
       addCarData :{
         productId:"",
@@ -189,6 +202,7 @@ export default {
     },
     //立即购买
     goShopping(){
+      this.skuShow = true
 //      this.$router.push({
 //        path:'/addresslist'
 //      })
@@ -202,6 +216,8 @@ export default {
     // "price": "3.5"//可选 加入购物车数量 }], "parentId":"",//可选 默认空 主产品ID "enrollId":"0",//必选 默认0 活动类型
     // "isGift":"0"//可选 默认0 是否赠品 }
     addShoppingCar(){
+      this.skuShow = true
+      return;
       getCartAdd(this.addCarData).then((res) => {
         console.log(res);
         this.$vux.toast.test(res.msg)
