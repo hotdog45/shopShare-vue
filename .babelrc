@@ -13,7 +13,7 @@
     ["import", {
       "libraryName": "vant",
       "libraryDirectory": "es",
-      "style": false
+      "style": true
     }]
 
   ],

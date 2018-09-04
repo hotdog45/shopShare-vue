@@ -103,3 +103,8 @@ export function getBuyerOrderAdd(params) {
 export function getAddressDefault(params) {
   return request.post('user/AddressDefault', params);
 }
+
+//获取店铺信息
+export function getStoreIntro(params) {
+  return request.post('user/AddressDefault', params);
+}

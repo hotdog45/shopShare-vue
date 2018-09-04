@@ -49,11 +49,30 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {getStoreIntro} from '@/api/share';
+
   export default {
     name: "StoreInfo",
     data(){
-      return {}
+      return {
+        storeInfo:[]
+      }
     },
+    created(){
+      this.storeIntro()
+    },
+     methods:{
+       storeIntro(){
+         getStoreIntro().then((res)=>{
+           console.log(res)
+           if (res.status != 0) {
+             this.$vux.toast.text(res.msg);
+           } else {
+             this.storeInfo = res.data;
+           }
+         })
+       }
+     },
     components: {}
   }
 </script>

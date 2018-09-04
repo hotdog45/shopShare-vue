@@ -57,7 +57,7 @@
           <cell :title="('问大家（20）')" is-link :border-intent="false"></cell>
         </group>
       </div> -->
-      <div class="share-head">
+      <div class="share-head" @click="storeMessage">
         <group class="shop">
           <cell-box is-link>
             <div class="shop-img">
@@ -179,6 +179,11 @@ export default {
     this.getInfo();
   },
   methods: {
+    storeMessage(){
+      this.$router.push({
+        path: '/storehome',
+      })
+    },
     getInfo() {
       getShareList(this.product).then((res) => {
         console.log(res);

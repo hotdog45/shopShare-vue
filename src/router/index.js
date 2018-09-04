@@ -16,6 +16,17 @@ export const constantRouterMap = [{
     { path: '/shopcar', component: asyncImport('ShopCar/shopcar') },
     { path: '/my', component: asyncImport('My/My') },
   ]},
+  {
+  path: '/',
+  name: 'storeTab',
+  component: asyncImport('Store/Tab') ,
+  redirect:'/Home',//重定向到首页
+  children: [
+  { path: '', component: asyncImport('Home') },
+  { path: '/allBaby', component: asyncImport('Store/All') },
+  { path: '/new', component: asyncImport('Store/New') },
+  { path: '/video', component: asyncImport('Store/Video') },
+]},
   { path: '/shares', component: asyncImport('Shares') },
   { path: '/weixin', component: asyncImport('Weixin') },
   { path: '/linkshares', component: asyncImport('LinkShares') },
@@ -29,8 +40,9 @@ export const constantRouterMap = [{
   { path: '/orderdetail', component: asyncImport('order/OrderDetail') },
   { path: '/register', component: asyncImport('user/register') },
   { path: '/myorder', component: asyncImport('My/MyOrder') },
-  { path: '/intro', component: asyncImport('Store/Intro') },
+  { path: '/storeintro', component: asyncImport('Store/Intro') },
   { path: '/storehome', component: asyncImport('Store/Home') },
+  { path: '/allbaby', component: asyncImport('Store/All') },
 
 ];
 export default new Router({
