@@ -24,8 +24,9 @@ import { Popup } from 'vant';
 import {Tab, Tabs} from 'vant';
 import { Row, Col } from 'vant';
 import { Toast } from 'vant';
-
+import { Tabbar, TabbarItem } from 'vant';
 Vue.use(Toast);
+Vue.use(Tabbar).use(TabbarItem);
 Vue.use(Row).use(Col);
 Vue.use(Tab).use(Tabs);
 

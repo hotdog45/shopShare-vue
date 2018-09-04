@@ -89,6 +89,13 @@
     <div v-if="showPage == 2">这是新品上新</div>
     <div v-if="showPage == 3">这是视频直播</div>
 
+    <!--<div class="footer">-->
+      <!--<van-tabbar v-model="active">-->
+        <!--<van-tabbar-item>宝贝分类</van-tabbar-item>-->
+        <!--<van-tabbar-item>联系客服</van-tabbar-item>-->
+        <!--<van-tabbar-item>店铺简介</van-tabbar-item>-->
+      <!--</van-tabbar>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -150,8 +157,8 @@
       },
 
 //      获取店铺首页信息
-      storeInfo(){
-
+      storeInfo(index,title){
+//        this.$toast(title);
       },
 //      全部宝贝
       allBaby(){
@@ -335,5 +342,9 @@
   }
   }
 
+  }
+  .footer{
+    font-size: 14px;
+    height: 50px;
   }
 </style>
