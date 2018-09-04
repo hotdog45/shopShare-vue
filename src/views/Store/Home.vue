@@ -23,9 +23,9 @@
       <div class="focus">关注中</div>
     </div>
 
-    <van-tabs v-model="active" sticky>
-      <van-tab :title="'店铺首页'" @click="storeInfo"></van-tab>
-      <van-tab :title="'全部宝贝'" @click="allBaby"></van-tab>
+    <van-tabs v-model="active" sticky @click="storeInfo">
+      <van-tab :title="'店铺首页'"></van-tab>
+      <van-tab :title="'全部宝贝'"></van-tab>
       <van-tab :title="'新品上新'"></van-tab>
       <van-tab :title="'视频直播'"></van-tab>
     </van-tabs>
@@ -82,6 +82,13 @@
         </li>
       </ul>
     </div>
+    <div class="footer">
+      <van-tabbar v-model="active">
+        <van-tabbar-item>宝贝分类</van-tabbar-item>
+        <van-tabbar-item>联系客服</van-tabbar-item>
+        <van-tabbar-item>店铺简介</van-tabbar-item>
+      </van-tabbar>
+    </div>
   </div>
 </template>
 
@@ -128,8 +135,8 @@
       },
 
 //      获取店铺首页信息
-      storeInfo(){
-
+      storeInfo(index,title){
+//        this.$toast(title);
       },
 //      全部宝贝
       allBaby(){
@@ -313,5 +320,9 @@
   }
   }
 
+  }
+  .footer{
+    font-size: 14px;
+    height: 50px;
   }
 </style>
