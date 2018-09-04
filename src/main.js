@@ -23,7 +23,9 @@ import { Stepper } from 'vant';
 import { Popup } from 'vant';
 import {Tab, Tabs} from 'vant';
 import { Row, Col } from 'vant';
+import { Toast } from 'vant';
 
+Vue.use(Toast);
 Vue.use(Row).use(Col);
 Vue.use(Tab).use(Tabs);
 

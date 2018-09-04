@@ -23,73 +23,91 @@
       <div class="focus">关注中</div>
     </div>
 
-    <van-tabs v-model="active" sticky>
-      <van-tab :title="'店铺首页'" @click="storeInfo"></van-tab>
-      <van-tab :title="'全部宝贝'" @click="allBaby"></van-tab>
+    <van-tabs v-model="active" sticky @click="onClick">
+      <van-tab :title="'店铺首页'" ></van-tab>
+      <van-tab :title="'全部宝贝'" ></van-tab>
       <van-tab :title="'新品上新'"></van-tab>
       <van-tab :title="'视频直播'"></van-tab>
     </van-tabs>
 
-    <div class="content-wrapper">
-      <div class="home-banner">我是banner</div>
-      <div class="list-wrapper">
-        <div>
-          <div class="list-img">
-            <img src="" alt="">
+    <div v-if="false">
+      <div class="content-wrapper">
+        <div class="home-banner">我是banner</div>
+        <div class="list-wrapper">
+          <div>
+            <div class="list-img">
+              <img src="" alt="">
+            </div>
+            <div class="list-info">连衣裙</div>
           </div>
-          <div class="list-info">连衣裙</div>
-        </div>
-        <div>
-          <div class="list-img">
-            <img src="" alt="">
+          <div>
+            <div class="list-img">
+              <img src="" alt="">
+            </div>
+            <div class="list-info">套装</div>
           </div>
-          <div class="list-info">套装</div>
-        </div>
-        <div>
-          <div class="list-img">
-            <img src="" alt="">
+          <div>
+            <div class="list-img">
+              <img src="" alt="">
+            </div>
+            <div class="list-info">上装</div>
           </div>
-          <div class="list-info">上装</div>
-        </div>
-        <div>
-          <div class="list-img">
-            <img src="" alt="">
+          <div>
+            <div class="list-img">
+              <img src="" alt="">
+            </div>
+            <div class="list-info">下装</div>
           </div>
-          <div class="list-info">下装</div>
         </div>
+        <div class="home-banner">我是banner</div>
       </div>
-      <div class="home-banner">我是banner</div>
+      <div class="new">
+        <div class="new-header">新品推荐</div>
+        <ul>
+          <li v-for="item in goodsList">
+            <div class="img-wrapper">
+              <img src="" alt="">
+            </div>
+            <div class="new-info">惊喜价<span>{{item.price}}</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="new">
+        <div class="new-header">销量排行</div>
+        <ul>
+          <li v-for="item in goodsList" @click="goodsInfo">
+            <div class="img-wrapper">
+              <img src="" alt="">
+            </div>
+            <div class="new-info">惊喜价<span>¥{{item.price}}</span></div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="new">
-      <div class="new-header">新品推荐</div>
-      <ul>
-        <li v-for="item in goodsList">
-          <div class="img-wrapper">
-            <img src="" alt="">
-          </div>
-          <div class="new-info">惊喜价<span>{{item.price}}</span></div>
-        </li>
-      </ul>
-    </div>
-    <div class="new">
-      <div class="new-header">销量排行</div>
-      <ul>
-        <li v-for="item in goodsList" @click="goodsInfo">
-          <div class="img-wrapper">
-            <img src="" alt="">
-          </div>
-          <div class="new-info">惊喜价<span>¥{{item.price}}</span></div>
-        </li>
-      </ul>
-    </div>
+    <div v-if="showPage == 0">这是店铺首页</div>
+    <div v-if="showPage == 1">这是全部宝贝</div>
+    <div v-if="showPage == 2">这是新品上新</div>
+    <div v-if="showPage == 3">这是视频直播</div>
+
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+
+  import VideoPage from './Video';
+  import AllPage from './All';
+  import NewPage from './New';
+
   export default {
+    components: {
+      VideoPage,
+      AllPage,
+      NewPage,
+    },
     name: "StoreHome",
     data(){
       return {
+        showPage:0,
         value: '',
         active: 0,
         goodsList: [
@@ -115,6 +133,10 @@
       this.storeInfo(0)
     },
     methods: {
+      onClick(index, title) {
+        this.$toast(title);
+        this.showPage = index;
+      },
       goodsInfo(){
         this.$router.push({
           path: '/shares',
