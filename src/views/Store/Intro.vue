@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="seller">
-      <img src="../../assets/images/logo.png" alt="" style="width: 49px;height: 49px">
+      <img src="@/assets/images/logo.png" alt="" style="width: 49px;height: 49px">
       <div style="display: flex;flex-direction: column;margin-left: 10px;">
         <span>艾艾艾小北的店</span>
         <span style="margin-top: 10px;color: #333">2</span>
@@ -37,41 +37,45 @@
     <div class="contact">
       <span style="color:#333">掌柜名:</span>
       <span style="flex-grow:1;margin-left: 45px;font-size: 15px">大风车商城</span>
-      <img src="../../assets/images/share/come.png" style="width: 8px;height: 10px;margin-right: 12px">
+      <img src="@/assets/images/share/come.png" style="width: 8px;height: 10px;margin-right: 12px">
     </div>
 
     <div class="contact">
       <span style="color:#333">联系电话:</span>
       <span style="flex-grow:1;margin-left: 28px;font-size: 15px">029-456789</span>
-      <img src="../../assets/images/share/come.png" style="width: 8px;height: 10px;margin-right: 12px">
+      <img src="@/assets/images/share/come.png" style="width: 8px;height: 10px;margin-right: 12px">
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import {getStoreIntro} from '@/api/share';
+//  import {getStoreDetail} from '@/api/share';
 
   export default {
     name: "StoreInfo",
     data(){
       return {
-        storeInfo:[]
+        storeInfo:{
+          storeId:""
+      }
       }
     },
     created(){
-      this.storeIntro()
+//      this.storeIntro()
     },
      methods:{
-       storeIntro(){
-         getStoreIntro().then((res)=>{
-           console.log(res)
-           if (res.status != 0) {
-             this.$vux.toast.text(res.msg);
-           } else {
-             this.storeInfo = res.data;
-           }
-         })
-       }
+      //获取店铺信息
+//       storeIntro(){
+//         this.storeInfo.storeId = this.$route.query.storeId;
+//         getStoreDetail(this.storeInfo).then((res)=>{
+//           console.log(res)
+//           if (res.status != 0) {
+//             this.$vux.toast.text(res.msg);
+//           } else {
+//             this.storeInfo = res.data;
+//           }
+//         })
+//       }
      },
     components: {}
   }

@@ -1,14 +1,9 @@
 <template>
   <div>
-    <van-tabs v-model="active1" sticky>
-      <van-tab :title="'店铺首页'"></van-tab>
-      <van-tab :title="'全部宝贝'"></van-tab>
-      <van-tab :title="'新品上新'"></van-tab>
-      <van-tab :title="'视频直播'"></van-tab>
-    </van-tabs>
-
     <van-tabs v-model="active" line-width=0 scroll="isFixed">
-      <van-tab :title="'综合'"></van-tab>
+      <van-tab :title="'综合'">
+
+      </van-tab>
       <van-tab :title="'销量'"></van-tab>
       <van-tab :title="'新品'"></van-tab>
       <van-tab :title="'价格'"></van-tab>
@@ -38,7 +33,7 @@
     name: "AllBaby",
     data(){
       return {
-        active1: 1,
+        active: 1,
         goodsList: [
           {
             url: "",
@@ -49,8 +44,8 @@
           {
             url: "",
             info: "媛媛公主童装女童夏装长裙中大童",
-            price: 58,
-            buyer: 23
+            price: 83,
+            buyer: 16
           },
           {
             url: "",
@@ -64,41 +59,41 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" rel="stylesheet/less">
   .all-list {
     margin: 6px;
 
-  >
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  >
-  li {
-    width: 48%;
-    background-color: #fff;
-    margin-top:6px;
+    >
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-left: 2%;
+      margin-right: 2%;
+      >
+      li {
+        width: 48.5%;
+        background-color: #fff;
+        margin-top: 6px;
 
-  >
-  .img-wrapper {
-    width: 160px;
-    height: 179px;
-    margin-left: 5px;
-    background-color: #fff;
-    text-align: center;
-  }
-  .info-wrapper{
-    padding:5px;
-  >
-  .baby-info {
-    font-size: 12px;
-  }
-  }
+        >
+        .img-wrapper {
+          width: 160px;
+          height: 179px;
 
+          background-color: #fff;
+          text-align: center;
+        }
+        .info-wrapper {
+          padding: 5px;
+          >
+          .baby-info {
+            font-size: 12px;
+          }
+        }
 
-
-  }
-  }
+      }
+    }
   }
 </style>

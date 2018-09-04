@@ -89,10 +89,11 @@
 
     </div>
 
-    <div class="cacel-order">
+    <!--<div class="cacel-order">-->
       <!--<button @click="cancelOrder" v-model="show">取消订单</button>-->
-    <div style="display: flex;flex-direction:row;justify-content:flex-end;align-items: center;">
-      <button class="btn1" v-show="orderData.statusCode == 1 " @click="btn1click(index)" v-model="show" style="color:#666">取消订单</button>
+
+    <div class="btnclass" style="display: flex;flex-direction:row;justify-content:flex-end;align-items: center; position: fixed;bottom: 0;width: 100%">
+      <button class="btn1" v-show="orderData.statusCode == 1 " @click="btn1click(index)" v-model="show" style="color:#666;background: #fff;border: 1px solid #eee">取消订单</button>
       <!--<button class="btn2" v-show="item.statusCode > 5" @click="btn2click">查看拼包凭证</button> &lt;!&ndash;86&ndash;&gt;-->
       <button class="btn3" v-show="orderData.statusCode < 2" @click="btn3click(index)" style="background: #FD6D1F;border: none;color:#fff">付款</button>
       <!--<button class="btn4" v-show="item.statusCode ==1" @click="btn4click(index)">取消退款</button>-->
@@ -453,5 +454,23 @@
       background-color: @white;
     }
 
+  }
+  .btnclass {
+    background: #fff;
+    height: 50px;
+    > button {
+      border-radius: 1px;
+      width: 84px;
+      height: 24px;
+      font-size: 11px;
+      background-color: #FD6D1F;
+      color: #fff;
+      border: none;
+      margin: 10px 0px;
+      margin-right: 15px;
+    }
+    /*position: absolute;*/
+    /*right: 0px;*/
+    /*margin-top: -45px;*/
   }
 </style>

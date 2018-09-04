@@ -182,6 +182,7 @@ export default {
     storeMessage(){
       this.$router.push({
         path: '/storehome',
+
       })
     },
     getInfo() {

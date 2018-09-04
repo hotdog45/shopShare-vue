@@ -106,5 +106,9 @@ export function getAddressDefault(params) {
 
 //获取店铺信息
 export function getStoreIntro(params) {
-  return request.post('user/AddressDefault', params);
+  return request.post('user/StoreInfo', params);
+}
+//获取店铺信息详情
+export function getStoreDetail(params) {
+  return request.post('user/StoreDetail', params);
 }

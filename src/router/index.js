@@ -42,7 +42,10 @@ export const constantRouterMap = [{
   { path: '/myorder', component: asyncImport('My/MyOrder') },
   { path: '/storeintro', component: asyncImport('Store/Intro') },
   { path: '/storehome', component: asyncImport('Store/Home') },
-  { path: '/allbaby', component: asyncImport('Store/All') },
+  { path: '/firstpage', component: asyncImport('Store/components/First') },
+  { path: '/allbaby', component: asyncImport('Store/components/All') },
+  { path: '/newbaby', component: asyncImport('Store/components/New') },
+  { path: '/video', component: asyncImport('Store/components/Video') },
 
 ];
 export default new Router({

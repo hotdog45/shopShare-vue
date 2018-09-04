@@ -28,7 +28,7 @@
     </div>
 
     <div style="margin-bottom: 50px;margin-top: 15px;background-color: #fff" >
-      <x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0" fillable=true width="34px" @on-change="change"></x-number>
+      <!--<x-number style="height: 49px;font-size: 14px" title="购买数量" :min="0"  width="34px" @on-change="change"></x-number>-->
       <cell style="height: 49px;font-size: 14px" title="优惠券" value="满200减200" is-link v-show="!storeInfo.show"></cell>
       <cell style="height: 49px;font-size: 14px" title="配送方送" value="快递 免邮" is-link ></cell>
       <cell style="height: 49px;font-size: 14px" title="备注"></cell>

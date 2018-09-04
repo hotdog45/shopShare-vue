@@ -8,7 +8,6 @@
         <div style="flex-grow: 2;"></div>
         <button @click="addressEdit(item)">编辑</button>
         <button @click="goDelAddress(index)" >删除</button>
-
       </div>
     </div>
     <x-button style="background: #FD6D1F" type="primary" class="add-btn" @click.native="handleAddAddress">添加地址</x-button>
